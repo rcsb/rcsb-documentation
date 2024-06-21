@@ -12,6 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
+    <h1>test from index.js</h1>
     <Documentation groupMap={groupMap} menu={menu} item={item} />
   </React.StrictMode>
 );
