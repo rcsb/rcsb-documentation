@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import './Documentation.css';
 
 const Documentation = ({ groupMap, menu, item }) => {
   const [activeItem, setActiveItem] = useState(item);
