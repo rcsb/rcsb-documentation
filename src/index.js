@@ -1,18 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Documentation from './components/Documentation';
-import './index.css';
+import Documentation from './Documentation';
 
-// Sample data, replace with actual data or props
-const groupMap = {};
-const menu = [];
-const item = {};
-// Create a root container and render your application into it
-const root = ReactDOM.createRoot(document.getElementById('root'));
-
-root.render(
-  <React.StrictMode>
-    <h1>test from index.js</h1>
-    <Documentation groupMap={groupMap} menu={menu} item={item} />
-  </React.StrictMode>
-);
+export default Documentation;
