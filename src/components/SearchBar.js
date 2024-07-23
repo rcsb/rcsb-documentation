@@ -1,24 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import './SearchBar.css';
 
 const SUGGEST_URL_DOCUMENTS = '/document-search/suggest/';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [menuItems, setMenuItems] = useState([]);
+    const [menuIndex, setMenuIndex] = useState(-1);
 
-    const inputChange = async (e) => {
-        const value = e.target.value;
-        setValue(value);
+    useEffect(() => {
         if (value.length > 1) {
-            try {
-                const response = await fetch(SUGGEST_URL_DOCUMENTS + encodeURIComponent(value));
-                const data = await response.json();
-                setSuggestions(data);
-            } catch (error) {
-                console.error('Error fetching suggestions:', error);
-            }
+            fetchSuggestions(value);
         } else {
-            setSuggestions([]);
+            setMenuItems([]);
+            setMenuOpen(false);
+        }
+    }, [value]);
+
+    const fetchSuggestions = async (query) => {
+        try {
+            const response = await fetch(SUGGEST_URL_DOCUMENTS + encodeURIComponent(query));
+            const data = await response.json();
+            setSuggestions(data);
+            setMenuItems(data);
+            setMenuOpen(true);
+        } catch (error) {
+            console.error('Error fetching suggestions:', error);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        setValue(e.target.value);
+    };
+
+    const handleInputClick = () => {
+        if (value.length > 1 && menuItems.length > 0) {
+            setMenuOpen(true);
+        }
+    };
+
+    const handleSearch = (query) => {
+        window.location.href = '/document-search/' + encodeURIComponent(query);
+    };
+
+    const handleMenuSelect = (item) => {
+        handleSearch(item);
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === 'ArrowDown') {
+            setMenuIndex((prevIndex) => (prevIndex + 1) % menuItems.length);
+        } else if (e.key === 'ArrowUp') {
+            setMenuIndex((prevIndex) => (prevIndex - 1 + menuItems.length) % menuItems.length);
+        } else if (e.key === 'Enter') {
+            handleMenuSelect(menuItems[menuIndex]);
         }
     };
 
@@ -27,15 +64,25 @@ const SearchBar = () => {
             <input
                 type="text"
                 value={value}
-                onChange={inputChange}
+                onChange={handleInputChange}
+                onClick={handleInputClick}
+                onKeyDown={handleKeyDown}
                 placeholder="Search..."
+                autoComplete="off"
+                spellCheck="false"
+                autoFocus
             />
-            {suggestions.length > 0 && (
-                <ul className="suggestions-list">
-                    {suggestions.map((suggestion, index) => (
-                        <li key={index} dangerouslySetInnerHTML={{ __html: suggestion }} />
+            {menuOpen && (
+                <div id="search-bar-menu">
+                    {menuItems.map((item, index) => (
+                        <div
+                            key={index}
+                            className={index === menuIndex ? 'value-selected' : 'value'}
+                            onClick={() => handleMenuSelect(item)}
+                            dangerouslySetInnerHTML={{ __html: item }}
+                        />
                     ))}
-                </ul>
+                </div>
             )}
         </div>
     );
