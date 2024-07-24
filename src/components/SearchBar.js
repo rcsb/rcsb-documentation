@@ -67,7 +67,7 @@ const SearchBar = () => {
                 onChange={handleInputChange}
                 onClick={handleInputClick}
                 onKeyDown={handleKeyDown}
-                placeholder="Search..."
+                placeholder="Enter search terms(s), e.g. structure motif"
                 autoComplete="off"
                 spellCheck="false"
                 autoFocus
