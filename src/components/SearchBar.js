@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './SearchBar.css';
 
-const SUGGEST_URL_DOCUMENTS = '/document-search/suggest/';
+const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
@@ -23,8 +23,8 @@ const SearchBar = () => {
         try {
             const response = await fetch(SUGGEST_URL_DOCUMENTS + encodeURIComponent(query));
             const data = await response.json();
-            setSuggestions(data);
-            setMenuItems(data);
+            setSuggestions(data.results.documents.map(doc => doc.suggestion));
+            setMenuItems(data.results.documents.map(doc => doc.suggestion));
             setMenuOpen(true);
         } catch (error) {
             console.error('Error fetching suggestions:', error);
