@@ -25,20 +25,20 @@
 // export default App;
 
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import SearchResults from './components/SearchResults';
-import './App.css';
 
 const App = () => {
   return (
     <Router>
-      <Switch>
-        <Route path="/document-search/:query" component={SearchResults} />
-        <Route path="/" component={SearchBar} />
-      </Switch>
+      <Routes>
+        <Route path="/document-search/:query" element={<SearchResults />} />
+        <Route path="/" element={<SearchBar />} />
+      </Routes>
     </Router>
   );
 };
 
 export default App;
+

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './SearchResults.css';
+// import './SearchResults.css';
 
 const SEARCH_URL = '/docs-search/search?query=';
 
