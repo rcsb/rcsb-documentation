@@ -37,9 +37,9 @@ const SearchResults = () => {
             ) : (
                 <ul>
                     {results.map((result) => (
-                        <li key={result.id}>
-                            <a href={result.url}>{result.title}</a>
-                            <p>{result.snippet}</p>
+                        <li key={result.id.raw}>
+                            <a href={result.url.raw}>{result.title.raw}</a>
+                            <p>{result.snippet ? result.snippet : result.body_content.snippet}</p>
                         </li>
                     ))}
                 </ul>

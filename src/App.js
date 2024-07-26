@@ -1,3 +1,5 @@
+//No use of this file
+
 // import logo from './logo.svg';
 // import './App.css';
 
@@ -24,21 +26,22 @@
 
 // export default App;
 
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import SearchBar from './components/SearchBar';
-import SearchResults from './components/SearchResults';
+// import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import SearchBar from './components/SearchBar';
+// import SearchResults from './components/SearchResults';
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/document-search/:query" element={<SearchResults />} />
-        <Route path="/" element={<SearchBar />} />
-      </Routes>
-    </Router>
-  );
-};
+// const App = () => {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/document-search/:query" element={<SearchResults />} />
+//         <Route path="/" element={<SearchBar />} />
+//       </Routes>
+//     </Router>
+//   );
+// };
 
-export default App;
+// export default App;
+
 

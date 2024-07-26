@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
 
 const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
@@ -9,6 +10,7 @@ const SearchBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [menuItems, setMenuItems] = useState([]);
     const [menuIndex, setMenuIndex] = useState(-1);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (value.length > 1) {
@@ -42,7 +44,7 @@ const SearchBar = () => {
     };
 
     const handleSearch = (query) => {
-        window.location.href = '/document-search/' + encodeURIComponent(query);
+        navigate(`/document-search/${encodeURIComponent(query)}`);
     };
 
     const handleMenuSelect = (item) => {
