@@ -5,6 +5,7 @@
     --font-size: 16px;
     --padding: 10px;
     --border-radius: 4px;
+    --input-height: 45px; /* Consistent height for both input and button */
 }
 
 .searchBarComponent {
@@ -26,6 +27,7 @@
     position: relative;
     display: flex;
     width: 100%;
+    height: var(--input-height); /* Consistent height */
 }
 
 .inputContainer {
@@ -40,19 +42,23 @@
     border-radius: var(--border-radius) 0 0 var(--border-radius);
     font-size: var(--font-size);
     box-sizing: border-box;
+    height: 100%; /* Full height of the container */
 }
 
 .searchIcon {
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: 1px solid var(--border-color);
-    border-left: none;
-    border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    width: var(--input-height); /* Consistent width and height */
+    height: var(--input-height); /* Consistent height */
+    color: #fff;
+    line-height: var(--input-height);
+    background-color: rgba(50, 88, 128, 1);
+    font-size: 18px;
+    text-align: center;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 }
 
 .searchBtn {
