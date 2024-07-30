@@ -67,45 +67,48 @@ const SearchBar = () => {
     };
 
     return (
-        <div className={styles.searchBarComponent}>
-            <div className={styles.menuContainer}>
-                <table className={styles.searchBarTable}>
-                    <tbody>
-                        <tr>
-                            <td className={styles.searchBarInput}>
-                                <div className={styles.inputContainer}>
-                                    <input type="text"
-                                           className={styles.searchBarInputText}
-                                           onClick={handleInputClick}
-                                           onChange={handleInputChange}
-                                           onKeyDown={handleKeyDown}
-                                           placeholder="Enter search terms(s), e.g. structure motif"
-                                           autoComplete="off"
-                                           spellCheck="false"
-                                           autoFocus
-                                           value={value} />
-                                    {menuOpen && (
-                                        <div className={styles.searchBarMenu}>
-                                            {menuItems.map((item, i) => (
-                                                <div
-                                                    className={i === menuIndex ? styles.valueSelected : styles.value}
-                                                    key={item}
-                                                    onClick={() => handleMenuSelect(item)}
-                                                    dangerouslySetInnerHTML={{ __html: item }}
-                                                />
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            </td>
-                            <td>
-                                <div className={styles.searchIcon} onClick={handleButtonClick}>
-                                    <span className={`glyphicon glyphicon-search ${styles.searchBtn}`} />
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <h1>RCSB PDB Help</h1>
+            </div>
+            <div className={styles.mainContent}>
+                <div className={styles.searchBarComponent}>
+                    <div className={styles.menuContainer}>
+                        <div className={styles.searchBarInput}>
+                            <div className={styles.inputContainer}>
+                                <input type="text"
+                                       className={styles.searchBarInputText}
+                                       onClick={handleInputClick}
+                                       onChange={handleInputChange}
+                                       onKeyDown={handleKeyDown}
+                                       placeholder="Enter search terms(s), e.g. structure motif"
+                                       autoComplete="off"
+                                       spellCheck="false"
+                                       autoFocus
+                                       value={value} />
+                                {menuOpen && (
+                                    <div className={styles.searchBarMenu}>
+                                        {menuItems.map((item, i) => (
+                                            <div
+                                                className={i === menuIndex ? styles.valueSelected : styles.value}
+                                                key={item}
+                                                onClick={() => handleMenuSelect(item)}
+                                                dangerouslySetInnerHTML={{ __html: item }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                            <div className={styles.searchIcon} onClick={handleButtonClick}>
+                                <span className={`glyphicon glyphicon-search ${styles.searchBtn}`} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.newComponent}>
+                    {/* Add your new component here */}
+                    <p>New Component Content</p>
+                </div>
             </div>
         </div>
     );
