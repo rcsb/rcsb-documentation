@@ -1,0 +1,66 @@
+.searchBar {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.searchInput {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px 0 0 4px;
+    font-size: 16px;
+}
+
+.searchBtn {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.searchBtn .glyphicon {
+    font-size: 16px;
+}
+
+.suggestionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-top: none;
+    z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.suggestionsList div {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.suggestionsList div:hover,
+.valueSelected {
+    background: #f0f0f0;
+}
+
+.value {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.valueSelected {
+    background-color: #f0f0f0;
+}

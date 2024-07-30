@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './SearchBar.css';
+import styles from './SearchBar.module.css';
 
 const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
@@ -61,8 +61,14 @@ const SearchBar = () => {
         }
     };
 
+    const handleButtonClick = () => {
+        if (value.trim()) {
+            handleSearch(value);
+        }
+    };
+
     return (
-        <div className="search-bar">
+        <div className={styles.searchBar}>
             <input
                 type="text"
                 value={value}
@@ -73,13 +79,17 @@ const SearchBar = () => {
                 autoComplete="off"
                 spellCheck="false"
                 autoFocus
+                className={styles.searchInput}
             />
+            <button className={styles.searchBtn} onClick={handleButtonClick}>
+                <span className="glyphicon glyphicon-search"></span>
+            </button>
             {menuOpen && (
-                <div id="search-bar-menu">
+                <div className={styles.suggestionsList}>
                     {menuItems.map((item, index) => (
                         <div
                             key={index}
-                            className={index === menuIndex ? 'value-selected' : 'value'}
+                            className={index === menuIndex ? styles.valueSelected : styles.value}
                             onClick={() => handleMenuSelect(item)}
                             dangerouslySetInnerHTML={{ __html: item }}
                         />
