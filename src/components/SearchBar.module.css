@@ -1,66 +1,92 @@
-.searchBar {
+:root {
+    --border-color: #ccc;
+    --background-color: #fff;
+    --selected-background-color: #f0f0f0;
+    --font-size: 16px;
+    --padding: 10px;
+    --border-radius: 4px;
+}
+
+.searchBarComponent {
     position: relative;
     width: 100%;
     max-width: 600px;
     margin: 0 auto;
+}
+
+.menuContainer {
+    position: relative;
+}
+
+.searchBarTable {
+    width: 100%;
+}
+
+.searchBarInput {
+    position: relative;
     display: flex;
-    align-items: center;
+    width: 100%;
 }
 
-.searchInput {
-    width: calc(100% - 40px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    font-size: 16px;
+.inputContainer {
+    flex: 1;
+    display: flex;
 }
 
-.searchBtn {
+.searchBarInputText {
+    width: 100%;
+    padding: var(--padding);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+    font-size: var(--font-size);
+    box-sizing: border-box;
+}
+
+.searchIcon {
     width: 40px;
     height: 40px;
     background: none;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-left: none;
-    border-radius: 0 4px 4px 0;
-    cursor: pointer;
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
+    cursor: pointer;
 }
 
-.searchBtn .glyphicon {
-    font-size: 16px;
+.searchBtn {
+    font-size: var(--font-size);
 }
 
-.suggestionsList {
+.searchBarMenu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
-    border: 1px solid #ccc;
+    background: var(--background-color);
+    border: 1px solid var(--border-color);
     border-top: none;
     z-index: 1000;
     max-height: 200px;
     overflow-y: auto;
 }
 
-.suggestionsList div {
-    padding: 10px;
+.searchBarMenu div {
+    padding: var(--padding);
     cursor: pointer;
 }
 
-.suggestionsList div:hover,
+.searchBarMenu div:hover,
 .valueSelected {
-    background: #f0f0f0;
+    background: var(--selected-background-color);
 }
 
 .value {
-    padding: 10px;
+    padding: var(--padding);
     cursor: pointer;
 }
 
 .valueSelected {
-    background-color: #f0f0f0;
+    background-color: var(--selected-background-color);
 }

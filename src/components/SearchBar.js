@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchBar.module.css';
 
@@ -6,9 +6,8 @@ const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
-    const [suggestions, setSuggestions] = useState([]);
-    const [menuOpen, setMenuOpen] = useState(false);
     const [menuItems, setMenuItems] = useState([]);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [menuIndex, setMenuIndex] = useState(-1);
     const navigate = useNavigate();
 
@@ -21,17 +20,17 @@ const SearchBar = () => {
         }
     }, [value]);
 
-    const fetchSuggestions = async (query) => {
+    const fetchSuggestions = useCallback(async (query) => {
         try {
             const response = await fetch(SUGGEST_URL_DOCUMENTS + encodeURIComponent(query));
             const data = await response.json();
-            setSuggestions(data.results.documents.map(doc => doc.suggestion));
-            setMenuItems(data.results.documents.map(doc => doc.suggestion));
+            const suggestions = data.results.documents.map(doc => doc.suggestion);
+            setMenuItems(suggestions);
             setMenuOpen(true);
         } catch (error) {
             console.error('Error fetching suggestions:', error);
         }
-    };
+    }, []);
 
     const handleInputChange = (e) => {
         setValue(e.target.value);
@@ -43,9 +42,9 @@ const SearchBar = () => {
         }
     };
 
-    const handleSearch = (query) => {
+    const handleSearch = useCallback((query) => {
         navigate(`/document-search/${encodeURIComponent(query)}`);
-    };
+    }, [navigate]);
 
     const handleMenuSelect = (item) => {
         handleSearch(item);
@@ -68,34 +67,46 @@ const SearchBar = () => {
     };
 
     return (
-        <div className={styles.searchBar}>
-            <input
-                type="text"
-                value={value}
-                onChange={handleInputChange}
-                onClick={handleInputClick}
-                onKeyDown={handleKeyDown}
-                placeholder="Enter search terms(s), e.g. structure motif"
-                autoComplete="off"
-                spellCheck="false"
-                autoFocus
-                className={styles.searchInput}
-            />
-            <button className={styles.searchBtn} onClick={handleButtonClick}>
-                <span className="glyphicon glyphicon-search"></span>
-            </button>
-            {menuOpen && (
-                <div className={styles.suggestionsList}>
-                    {menuItems.map((item, index) => (
-                        <div
-                            key={index}
-                            className={index === menuIndex ? styles.valueSelected : styles.value}
-                            onClick={() => handleMenuSelect(item)}
-                            dangerouslySetInnerHTML={{ __html: item }}
-                        />
-                    ))}
-                </div>
-            )}
+        <div className={styles.searchBarComponent}>
+            <div className={styles.menuContainer}>
+                <table className={styles.searchBarTable}>
+                    <tbody>
+                        <tr>
+                            <td className={styles.searchBarInput}>
+                                <div className={styles.inputContainer}>
+                                    <input type="text"
+                                           className={styles.searchBarInputText}
+                                           onClick={handleInputClick}
+                                           onChange={handleInputChange}
+                                           onKeyDown={handleKeyDown}
+                                           placeholder="Enter search terms(s), e.g. structure motif"
+                                           autoComplete="off"
+                                           spellCheck="false"
+                                           autoFocus
+                                           value={value} />
+                                    {menuOpen && (
+                                        <div className={styles.searchBarMenu}>
+                                            {menuItems.map((item, i) => (
+                                                <div
+                                                    className={i === menuIndex ? styles.valueSelected : styles.value}
+                                                    key={item}
+                                                    onClick={() => handleMenuSelect(item)}
+                                                    dangerouslySetInnerHTML={{ __html: item }}
+                                                />
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </td>
+                            <td>
+                                <div className={styles.searchIcon} onClick={handleButtonClick}>
+                                    <span className={`glyphicon glyphicon-search ${styles.searchBtn}`} />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
