@@ -1,0 +1,57 @@
+{
+    "Learning Resources": [
+      { "title": "Introduction to Structural Biology", "link": "link1" },
+      { "title": "Basic Concepts of Structural Biology", "link": "link2" },
+      { "title": "Online Courses", "link": "link3" },
+      { "title": "Workshops and Seminars", "link": "link4" },
+      { "title": "Textbooks and Publications", "link": "link5" },
+      { "title": "Tutorial Videos", "link": "link6" },
+      { "title": "Glossary of Terms", "link": "link7" }
+    ],
+    "Structural Biology Data": [
+      { "title": "Protein Data Bank", "link": "link1" },
+      { "title": "EM Data Bank", "link": "link2" },
+      { "title": "SASBDB", "link": "link3" },
+      { "title": "NMR Data Bank", "link": "link4" },
+      { "title": "Sequence Data Banks", "link": "link5" },
+      { "title": "Structural Classification of Proteins", "link": "link6" },
+      { "title": "BioMagResBank", "link": "link7" }
+    ],
+    "Search Tools": [
+      { "title": "Basic Search", "link": "link1" },
+      { "title": "Advanced Search", "link": "link2" },
+      { "title": "Sequence Search", "link": "link3" },
+      { "title": "Structure Search", "link": "link4" },
+      { "title": "Keyword Search", "link": "link5" },
+      { "title": "Motif Search", "link": "link6" },
+      { "title": "Domain Search", "link": "link7" }
+    ],
+    "Advanced Searching": [
+      { "title": "BLAST", "link": "link1" },
+      { "title": "FASTA", "link": "link2" },
+      { "title": "HMMER", "link": "link3" },
+      { "title": "CLUSTAL", "link": "link4" },
+      { "title": "Multiple Sequence Alignment", "link": "link5" },
+      { "title": "Phylogenetic Analysis", "link": "link6" },
+      { "title": "Pattern Matching", "link": "link7" }
+    ],
+    "Visualize": [
+      { "title": "Molecular Visualization Tools", "link": "link1" },
+      { "title": "3D Structure Viewer", "link": "link2" },
+      { "title": "Interactive Models", "link": "link3" },
+      { "title": "Structure Comparison Tools", "link": "link4" },
+      { "title": "Annotation Tools", "link": "link5" },
+      { "title": "Data Mapping Tools", "link": "link6" },
+      { "title": "Visualization Plugins", "link": "link7" }
+    ],
+    "Programmatic Access": [
+      { "title": "API Documentation", "link": "link1" },
+      { "title": "RESTful Services", "link": "link2" },
+      { "title": "GraphQL", "link": "link3" },
+      { "title": "SOAP Services", "link": "link4" },
+      { "title": "Client Libraries", "link": "link5" },
+      { "title": "Example Code", "link": "link6" },
+      { "title": "SDKs", "link": "link7" }
+    ]
+  }
+  

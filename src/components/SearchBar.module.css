@@ -16,7 +16,6 @@
 }
 
 .header {
-    flex: 2; /* 2/3 of the container width */
     text-align: left;
     margin-bottom: var(--padding);
 }
@@ -31,6 +30,7 @@
     position: relative;
     max-width: none; /* Remove max-width constraint */
     display: flex;
+    flex-direction: column; /* Stack elements vertically */
     align-items: center;
 }
 
@@ -43,11 +43,6 @@
 .menuContainer {
     position: relative;
     width: 100%;
-}
-
-.searchBarTable {
-    width: 100%;
-    border-collapse: collapse;
 }
 
 .searchBarInput {

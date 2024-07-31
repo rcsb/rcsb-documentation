@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './SearchBar.module.css';
+import Resources from './Resources';
+import data from '../resourcesData.json'; // Import the JSON data
 
 const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
@@ -104,10 +106,11 @@ const SearchBar = () => {
                             </div>
                         </div>
                     </div>
+                    <Resources data={data} />
                 </div>
                 <div className={styles.newComponent}>
                     {/* Add your new component here */}
-                    <p>New Component Content</p>
+                    <p>Help Links and Videos Tutorials</p>
                 </div>
             </div>
         </div>
