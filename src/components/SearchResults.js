@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './SearchResults.css';
+import './SearchResults.css'; // Custom styles
 
 const SEARCH_URL = '/docs-search/search?query=';
 
@@ -105,47 +105,46 @@ const SearchResults = () => {
     };
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className="text-center"><i className="fa fa-spinner fa-spin"></i> Loading...</div>;
     }
 
     return (
-        <div className="search-results">
+        <div className="container search-results">
             <h1>Search Results for "{query}"</h1>
             {results.length === 0 ? (
-                <div>No results found</div>
+                <div className="alert alert-warning">No results found</div>
             ) : (
                 <>
-                    <ul className="nav nav-tabs" role="tablist" id="sourcetab">
+                    <ul className="nav nav-tabs" role="tablist">
                         <li className={activeTab === 'rcsbPdb' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('rcsbPdb')}>
+                            <a onClick={() => handleTabClick('rcsbPdb')} role="tab">
                                 RCSB PDB ({num.rcsbPdb})
                             </a>
                         </li>
                         <li className={activeTab === 'newsAnnouncements' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('newsAnnouncements')}>
+                            <a onClick={() => handleTabClick('newsAnnouncements')} role="tab">
                                 News / Announcements ({num.newsAnnouncements})
                             </a>
                         </li>
                         <li className={activeTab === 'pdb101' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('pdb101')}>
+                            <a onClick={() => handleTabClick('pdb101')} role="tab">
                                 PDB-101 Articles ({num.pdb101})
                             </a>
                         </li>
                         <li>
-                            <a onClick={() => handleTabClick('all')}>
+                            <a onClick={() => handleTabClick('all')} role="tab">
                                 All ({num.all})
                             </a>
                         </li>
                     </ul>
-                    <br />
                     <div className="tab-content">
                         <div className={`tab-pane ${activeTab === 'rcsbPdb' ? 'active' : ''}`}>
                             {num.rcsbPdb === 0 ? (
-                                <div className="not-found">No documents found</div>
+                                <div className="alert alert-info">No documents found</div>
                             ) : (
-                                <ul>
+                                <ul className="list-group">
                                     {results.map((o) => o.tab === 'rcsbPdb' && (
-                                        <li key={o.id}>
+                                        <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url}>{o.url_tokens}</a>
                                             </div>
@@ -158,11 +157,11 @@ const SearchResults = () => {
                         </div>
                         <div className={`tab-pane ${activeTab === 'newsAnnouncements' ? 'active' : ''}`}>
                             {num.newsAnnouncements === 0 ? (
-                                <div className="not-found">No documents found</div>
+                                <div className="alert alert-info">No documents found</div>
                             ) : (
-                                <ul>
+                                <ul className="list-group">
                                     {results.map((o) => o.tab === 'newsAnnouncements' && (
-                                        <li key={o.id}>
+                                        <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url}>{o.url_tokens}</a>
                                             </div>
@@ -176,11 +175,11 @@ const SearchResults = () => {
                         </div>
                         <div className={`tab-pane ${activeTab === 'pdb101' ? 'active' : ''}`}>
                             {num.pdb101 === 0 ? (
-                                <div className="not-found">No documents found</div>
+                                <div className="alert alert-info">No documents found</div>
                             ) : (
-                                <ul>
+                                <ul className="list-group">
                                     {results.map((o) => o.tab === 'pdb101' && (
-                                        <li key={o.id}>
+                                        <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url} target="_blank" rel="noopener noreferrer">
                                                     {o.url_tokens}
@@ -199,11 +198,11 @@ const SearchResults = () => {
                         </div>
                         <div className={`tab-pane ${activeTab === 'all' ? 'active' : ''}`}>
                             {num.all === 0 ? (
-                                <div className="not-found">No documents found</div>
+                                <div className="alert alert-info">No documents found</div>
                             ) : (
-                                <ul>
+                                <ul className="list-group">
                                     {results.map((o) => (
-                                        <li key={o.id}>
+                                        <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
                                                     {o.url_tokens}

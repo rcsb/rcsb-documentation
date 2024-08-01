@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './SearchBar.module.css';
 import Resources from './Resources';
 import data from '../resourcesData.json'; // Import the JSON data
+import './SearchBar.css'; // Custom styles
 
 const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
@@ -69,48 +69,65 @@ const SearchBar = () => {
     };
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
-                <h1>RCSB PDB Help</h1>
-            </div>
-            <div className={styles.mainContent}>
-                <div className={styles.searchBarComponent}>
-                    <div className={styles.menuContainer}>
-                        <div className={styles.searchBarInput}>
-                            <div className={styles.inputContainer}>
-                                <input type="text"
-                                       className={styles.searchBarInputText}
-                                       onClick={handleInputClick}
-                                       onChange={handleInputChange}
-                                       onKeyDown={handleKeyDown}
-                                       placeholder="Enter search terms(s), e.g. structure motif"
-                                       autoComplete="off"
-                                       spellCheck="false"
-                                       autoFocus
-                                       value={value} />
-                                {menuOpen && (
-                                    <div className={styles.searchBarMenu}>
-                                        {menuItems.map((item, i) => (
-                                            <div
-                                                className={i === menuIndex ? styles.valueSelected : styles.value}
-                                                key={item}
-                                                onClick={() => handleMenuSelect(item)}
-                                                dangerouslySetInnerHTML={{ __html: item }}
-                                            />
-                                        ))}
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles.searchIcon} onClick={handleButtonClick}>
-                                <span className={`glyphicon glyphicon-search ${styles.searchBtn}`} />
-                            </div>
-                        </div>
+        <div className="container my-4">
+            <div className="row">
+                <div className="col-lg-8 col-md-8 col-sm-12">
+                    <h1 className="text-left mb-3">RCSB PDB Help</h1>
+                    <div className="input-group search-bar">
+                        <input type="text"
+                               className="form-control"
+                               onClick={handleInputClick}
+                               onChange={handleInputChange}
+                               onKeyDown={handleKeyDown}
+                               placeholder="Enter search terms(s), e.g. structure motif"
+                               autoComplete="off"
+                               spellCheck="false"
+                               autoFocus
+                               value={value} />
+                        <span className="input-group-btn">
+                            <button className="btn btn-primary search-button" onClick={handleButtonClick}>
+                                <i className="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                        {menuOpen && (
+                            <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
+                                {menuItems.map((item, i) => (
+                                    <li key={item} className={i === menuIndex ? 'active' : ''}>
+                                        <a href="#!" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
                     </div>
                     <Resources data={data} />
                 </div>
-                <div className={styles.newComponent}>
-                    {/* Add your new component here */}
-                    <p>Help Links and Videos Tutorials</p>
+                <div className="col-lg-4 col-md-4 col-sm-12">
+                    <div className="p-3 bg-white">
+                        <p>Help Links and Videos Tutorials</p>
+                        {/* Placeholder for help and video components */}
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="mini-component-placeholder">
+                                    {/* component 1 */}
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="mini-component-placeholder">
+                                    {/* component 2 */}
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="mini-component-placeholder">
+                                    {/* component 3 */}
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="mini-component-placeholder">
+                                    {/*  component 4 */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
