@@ -8,13 +8,17 @@ const Resources = ({ data }) => {
         <div key={index} className="resourceBox">
           <div className="panel panel-default">
             <div className="panel-heading">
-              <h3 className="panel-title">{category}</h3>
+              <h3 className="panel-title">
+                {category}
+                <span className="tooltip-icon" data-tooltip={data[category].description}>i</span>
+              </h3>
             </div>
             <div className="panel-body">
               <ul className="list-unstyled">
-                {data[category].map((item, i) => (
-                  <li key={i}>
+                {data[category].subheadings.map((item, i) => (
+                  <li key={i} className="subheading-container">
                     <a href={item.link}>{item.title}</a>
+                    <p className="subheading-description">{item.description}</p>
                   </li>
                 ))}
               </ul>
