@@ -45,7 +45,7 @@ const SearchBar = () => {
     };
 
     const handleSearch = useCallback((query) => {
-        navigate(`/document-search/${encodeURIComponent(query)}`);
+        navigate(`/doc-search/${encodeURIComponent(query)}`);
     }, [navigate]);
 
     const handleMenuSelect = (item) => {

@@ -7,8 +7,8 @@ import SearchResults from './components/SearchResults';
 const App = () => (
   <Router>
     <Routes>
-      <Route path="/document-search" element={<SearchBar />} />
-      <Route path="/document-search/:query" element={<SearchResults />} />
+      <Route path="/doc-search" element={<SearchBar />} />
+      <Route path="/doc-search/:query" element={<SearchResults />} />
     </Routes>
   </Router>
 );

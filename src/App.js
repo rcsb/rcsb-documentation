@@ -35,7 +35,7 @@
 //   return (
 //     <Router>
 //       <Routes>
-//         <Route path="/document-search/:query" element={<SearchResults />} />
+//         <Route path="/doc-search/:query" element={<SearchResults />} />
 //         <Route path="/" element={<SearchBar />} />
 //       </Routes>
 //     </Router>
