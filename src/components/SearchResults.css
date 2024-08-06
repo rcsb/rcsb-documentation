@@ -41,6 +41,25 @@
 }
 
 .pagination {
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: 20px;
+}
+
+.pagination-info {
+    font-size: 14px;
+    color: #555;
+}
+
+.pagination .page-item .page-link {
+    color: #337ab7;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #337ab7;
+    border-color: #337ab7;
+    color: white;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ddd;
 }

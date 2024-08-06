@@ -125,11 +125,26 @@ const SearchResults = () => {
             );
         }
         return (
-            <nav aria-label="Page navigation">
-                <ul className="pagination">
-                    {pages}
-                </ul>
-            </nav>
+            <div className="d-flex justify-content-between align-items-center">
+                <div className="pagination-info">
+                    Showing {((currentPage - 1) * RESULTS_PER_PAGE) + 1} to {Math.min(currentPage * RESULTS_PER_PAGE, totalResults)} of {totalResults} entries
+                </div>
+                <nav aria-label="Page navigation">
+                    <ul className="pagination">
+                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                            <a className="page-link" onClick={() => handlePageChange(currentPage - 1)} aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        {pages}
+                        <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+                            <a className="page-link" onClick={() => handlePageChange(currentPage + 1)} aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         );
     };
 
@@ -249,7 +264,7 @@ const SearchResults = () => {
                             )}
                         </div>
                     </div>
-                    {renderPagination(num[activeTab])}
+                    {results.filter((o) => activeTab === 'all' || o.tab === activeTab).length > 0 && renderPagination(num[activeTab])}
                 </>
             )}
         </div>
