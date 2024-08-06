@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import './SearchResults.css'; // Custom styles
 
 const SEARCH_URL = '/docs-search/search?query=';
+const RESULTS_PER_PAGE = 25;
 
 const SearchResults = () => {
     const { query } = useParams();
@@ -10,6 +11,7 @@ const SearchResults = () => {
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
     const [loading, setLoading] = useState(true);
     const [activeTab, setActiveTab] = useState('rcsbPdb');
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchResults = async () => {
@@ -102,6 +104,33 @@ const SearchResults = () => {
 
     const handleTabClick = (tab) => {
         setActiveTab(tab);
+        setCurrentPage(1); // Reset to the first page when changing tabs
+    };
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+    };
+
+    const paginatedResults = results.filter((o) => activeTab === 'all' || o.tab === activeTab)
+                                     .slice((currentPage - 1) * RESULTS_PER_PAGE, currentPage * RESULTS_PER_PAGE);
+
+    const renderPagination = (totalResults) => {
+        const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE);
+        const pages = [];
+        for (let i = 1; i <= totalPages; i++) {
+            pages.push(
+                <li key={i} className={`page-item ${i === currentPage ? 'active' : ''}`}>
+                    <a className="page-link" onClick={() => handlePageChange(i)}>{i}</a>
+                </li>
+            );
+        }
+        return (
+            <nav aria-label="Page navigation">
+                <ul className="pagination">
+                    {pages}
+                </ul>
+            </nav>
+        );
     };
 
     if (loading) {
@@ -143,7 +172,7 @@ const SearchResults = () => {
                                 <div className="alert alert-info">No documents found</div>
                             ) : (
                                 <ul className="list-group">
-                                    {results.map((o) => o.tab === 'rcsbPdb' && (
+                                    {paginatedResults.map((o) => o.tab === 'rcsbPdb' && (
                                         <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url}>{o.url_tokens}</a>
@@ -160,7 +189,7 @@ const SearchResults = () => {
                                 <div className="alert alert-info">No documents found</div>
                             ) : (
                                 <ul className="list-group">
-                                    {results.map((o) => o.tab === 'newsAnnouncements' && (
+                                    {paginatedResults.map((o) => o.tab === 'newsAnnouncements' && (
                                         <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url}>{o.url_tokens}</a>
@@ -178,7 +207,7 @@ const SearchResults = () => {
                                 <div className="alert alert-info">No documents found</div>
                             ) : (
                                 <ul className="list-group">
-                                    {results.map((o) => o.tab === 'pdb101' && (
+                                    {paginatedResults.map((o) => o.tab === 'pdb101' && (
                                         <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url} target="_blank" rel="noopener noreferrer">
@@ -201,7 +230,7 @@ const SearchResults = () => {
                                 <div className="alert alert-info">No documents found</div>
                             ) : (
                                 <ul className="list-group">
-                                    {results.map((o) => (
+                                    {paginatedResults.map((o) => (
                                         <li key={o.id} className="list-group-item">
                                             <div className="url-tokens">
                                                 <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
@@ -220,6 +249,7 @@ const SearchResults = () => {
                             )}
                         </div>
                     </div>
+                    {renderPagination(num[activeTab])}
                 </>
             )}
         </div>

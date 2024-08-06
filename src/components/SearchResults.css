@@ -39,3 +39,8 @@
 .tab-content {
     margin-top: 20px;
 }
+
+.pagination {
+    justify-content: center;
+    margin-top: 20px;
+}
