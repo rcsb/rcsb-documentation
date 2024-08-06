@@ -22,6 +22,17 @@ const SearchResults = () => {
                 setResults(transformedData.results);
                 setNum(transformedData.num);
                 setLoading(false);
+
+                // Check if the initial tab has no results and switch to the next available tab
+                if (transformedData.num.rcsbPdb === 0) {
+                    if (transformedData.num.newsAnnouncements > 0) {
+                        setActiveTab('newsAnnouncements');
+                    } else if (transformedData.num.pdb101 > 0) {
+                        setActiveTab('pdb101');
+                    } else if (transformedData.num.all > 0) {
+                        setActiveTab('all');
+                    }
+                }
             } catch (error) {
                 console.error('Error fetching search results:', error);
                 setLoading(false);
