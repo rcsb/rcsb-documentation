@@ -89,6 +89,7 @@ const SearchBar = () => {
                                 <i className="glyphicon glyphicon-search"></i>
                             </button>
                         </span>
+                        <span className="tooltip-icon" data-tooltip="Search for documentation"><i className="glyphicon glyphicon-info-sign"></i></span>
                         {menuOpen && (
                             <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
                                 {menuItems.map((item, i) => (

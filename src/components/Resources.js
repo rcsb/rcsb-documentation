@@ -23,6 +23,9 @@ const Resources = ({ data }) => {
                 ))}
               </ul>
             </div>
+            <div className="panel-footer">
+              <a href="#">Related FAQs</a>
+            </div>
           </div>
         </div>
       ))}
