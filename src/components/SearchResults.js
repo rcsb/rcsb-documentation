@@ -182,118 +182,127 @@ const SearchResults = () => {
     return (
         <div className="container search-results">
             <h1>Search Results for "{query}"</h1>
-            {results.length === 0 ? (
-                <div className="alert alert-warning">No results found</div>
-            ) : (
-                <>
-                    <ul className="nav nav-tabs" role="tablist">
+            <div className="row">
+
+            </div>
+            <div className="row">
+                <div className="col-md-3">
+                    <ul className="nav nav-pills nav-stacked">
                         <li className={activeTab === 'rcsbPdb' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('rcsbPdb')} role="tab">
+                            <a onClick={() => handleTabClick('rcsbPdb')}>
                                 RCSB PDB ({num.rcsbPdb})
                             </a>
                         </li>
                         <li className={activeTab === 'newsAnnouncements' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('newsAnnouncements')} role="tab">
+                            <a onClick={() => handleTabClick('newsAnnouncements')}>
                                 News / Announcements ({num.newsAnnouncements})
                             </a>
                         </li>
                         <li className={activeTab === 'pdb101' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('pdb101')} role="tab">
+                            <a onClick={() => handleTabClick('pdb101')}>
                                 PDB-101 Articles ({num.pdb101})
                             </a>
                         </li>
-                        <li>
-                            <a onClick={() => handleTabClick('all')} role="tab">
+                        <li className={activeTab === 'all' ? 'active' : ''}>
+                            <a onClick={() => handleTabClick('all')}>
                                 All ({num.all})
                             </a>
                         </li>
                     </ul>
+                </div>
+                <div className="col-md-9">
                     <div className="tab-content">
-                        <div className={`tab-pane ${activeTab === 'rcsbPdb' ? 'active' : ''}`}>
-                            {num.rcsbPdb === 0 ? (
-                                <div className="alert alert-info">No documents found</div>
-                            ) : (
-                                <ul className="list-group">
-                                    {paginatedResults.map((o) => o.tab === 'rcsbPdb' && (
-                                        <li key={o.id} className="list-group-item">
-                                            <div className="url-tokens">
-                                                <a href={o.url}>{o.url_tokens}</a>
-                                            </div>
-                                            <h3><a href={o.url}>{o.title}</a></h3>
-                                            <p>{o.snippet}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                        <div className={`tab-pane ${activeTab === 'newsAnnouncements' ? 'active' : ''}`}>
-                            {num.newsAnnouncements === 0 ? (
-                                <div className="alert alert-info">No documents found</div>
-                            ) : (
-                                <ul className="list-group">
-                                    {paginatedResults.map((o) => o.tab === 'newsAnnouncements' && (
-                                        <li key={o.id} className="list-group-item">
-                                            <div className="url-tokens">
-                                                <a href={o.url}>{o.url_tokens}</a>
-                                            </div>
-                                            <h3><a href={o.url}>{o.title}</a></h3>
-                                            {o.release_date && <p>{o.release_date}</p>}
-                                            <p>{o.snippet}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                        <div className={`tab-pane ${activeTab === 'pdb101' ? 'active' : ''}`}>
-                            {num.pdb101 === 0 ? (
-                                <div className="alert alert-info">No documents found</div>
-                            ) : (
-                                <ul className="list-group">
-                                    {paginatedResults.map((o) => o.tab === 'pdb101' && (
-                                        <li key={o.id} className="list-group-item">
-                                            <div className="url-tokens">
-                                                <a href={o.url} target="_blank" rel="noopener noreferrer">
-                                                    {o.url_tokens}
-                                                </a>
-                                            </div>
-                                            <h3>
-                                                <a href={o.url} target="_blank" rel="noopener noreferrer">
-                                                    {o.title.replace('PDB-101: ', '')}
-                                                </a>
-                                            </h3>
-                                            <p>{o.snippet}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                        <div className={`tab-pane ${activeTab === 'all' ? 'active' : ''}`}>
-                            {num.all === 0 ? (
-                                <div className="alert alert-info">No documents found</div>
-                            ) : (
-                                <ul className="list-group">
-                                    {paginatedResults.map((o) => (
-                                        <li key={o.id} className="list-group-item">
-                                            <div className="url-tokens">
-                                                <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
-                                                    {o.url_tokens}
-                                                </a>
-                                            </div>
-                                            <h3>
-                                                <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
-                                                    {o.title}
-                                                </a>
-                                            </h3>
-                                            <p>{o.snippet}</p>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
+                        {results.length === 0 ? (
+                            <div className="alert alert-warning">No results found</div>
+                        ) : (
+                            <>
+                                <div className={`tab-pane ${activeTab === 'rcsbPdb' ? 'active' : ''}`}>
+                                    {num.rcsbPdb === 0 ? (
+                                        <div className="alert alert-info">No documents found</div>
+                                    ) : (
+                                        <ul className="list-group">
+                                            {paginatedResults.map((o) => o.tab === 'rcsbPdb' && (
+                                                <li key={o.id} className="list-group-item">
+                                                    <div className="url-tokens">
+                                                        <a href={o.url}>{o.url_tokens}</a>
+                                                    </div>
+                                                    <h3><a href={o.url}>{o.title}</a></h3>
+                                                    <p>{o.snippet}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                                <div className={`tab-pane ${activeTab === 'newsAnnouncements' ? 'active' : ''}`}>
+                                    {num.newsAnnouncements === 0 ? (
+                                        <div className="alert alert-info">No documents found</div>
+                                    ) : (
+                                        <ul className="list-group">
+                                            {paginatedResults.map((o) => o.tab === 'newsAnnouncements' && (
+                                                <li key={o.id} className="list-group-item">
+                                                    <div className="url-tokens">
+                                                        <a href={o.url}>{o.url_tokens}</a>
+                                                    </div>
+                                                    <h3><a href={o.url}>{o.title}</a></h3>
+                                                    {o.release_date && <p>{o.release_date}</p>}
+                                                    <p>{o.snippet}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                                <div className={`tab-pane ${activeTab === 'pdb101' ? 'active' : ''}`}>
+                                    {num.pdb101 === 0 ? (
+                                        <div className="alert alert-info">No documents found</div>
+                                    ) : (
+                                        <ul className="list-group">
+                                            {paginatedResults.map((o) => o.tab === 'pdb101' && (
+                                                <li key={o.id} className="list-group-item">
+                                                    <div className="url-tokens">
+                                                        <a href={o.url} target="_blank" rel="noopener noreferrer">
+                                                            {o.url_tokens}
+                                                        </a>
+                                                    </div>
+                                                    <h3>
+                                                        <a href={o.url} target="_blank" rel="noopener noreferrer">
+                                                            {o.title.replace('PDB-101: ', '')}
+                                                        </a>
+                                                    </h3>
+                                                    <p>{o.snippet}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                                <div className={`tab-pane ${activeTab === 'all' ? 'active' : ''}`}>
+                                    {num.all === 0 ? (
+                                        <div className="alert alert-info">No documents found</div>
+                                    ) : (
+                                        <ul className="list-group">
+                                            {paginatedResults.map((o) => (
+                                                <li key={o.id} className="list-group-item">
+                                                    <div className="url-tokens">
+                                                        <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
+                                                            {o.url_tokens}
+                                                        </a>
+                                                    </div>
+                                                    <h3>
+                                                        <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
+                                                            {o.title}
+                                                        </a>
+                                                    </h3>
+                                                    <p>{o.snippet}</p>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </div>
+                            </>
+                        )}
                     </div>
                     {results.filter((o) => activeTab === 'all' || o.tab === activeTab).length > 0 && renderPagination(num[activeTab])}
-                </>
-            )}
+                </div>
+            </div>
         </div>
     );
 };
