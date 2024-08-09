@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './SearchResults.css'; // Custom styles
 
-const SEARCH_URL = '/docs-search/search?query=';
+const SEARCH_URL = 'http://localhost:8080/docs-search/search'; //TODO: Remove localhost for deployment; used only for local testing
 const RESULTS_PER_PAGE = 25;
 
 const SearchResults = () => {
@@ -16,7 +16,23 @@ const SearchResults = () => {
     useEffect(() => {
         const fetchResults = async () => {
             try {
-                const response = await fetch(SEARCH_URL + encodeURIComponent(query));
+                // Construct the request body
+                const requestBody = {
+                    query: encodeURIComponent(query),
+                    page: {
+                        size: 100, // Fetch 100 results
+                        current: 1
+                    }
+                };
+
+                // Make the POST request to fetch 100 results
+                const response = await fetch(SEARCH_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Explicitly set content type otherwise gives 404
+                    },
+                    body: JSON.stringify(requestBody)
+                });
                 const data = await response.json();
                 const transformedData = transformData(data.results);
                 setResults(transformedData.results);

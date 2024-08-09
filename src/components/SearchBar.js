@@ -4,7 +4,7 @@ import Resources from './Resources';
 import data from '../resourcesData.json'; // Import the JSON data
 import './SearchBar.css'; // Custom styles
 
-const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
+const SUGGEST_URL_DOCUMENTS = 'http://localhost:8080/docs-search/query_suggestion?query='; //TODO: Remove localhost for deployment; used only for local testing
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
