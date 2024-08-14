@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Resources from './Resources';
+import ResourcesAndVideos from './ResourcesAndVideos'; 
 import data from '../resourcesData.json'; // Import the JSON data
 import './SearchBar.css'; // Custom styles
 
@@ -103,32 +104,7 @@ const SearchBar = () => {
                     <Resources data={data} />
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-12">
-                    <div className="p-3 bg-white">
-                        <p>Help Links and Videos Tutorials</p>
-                        {/* Placeholder for help and video components */}
-                        <div className="row">
-                            <div className="col-12">
-                                <div className="mini-component-placeholder">
-                                    {/* component 1 */}
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="mini-component-placeholder">
-                                    {/* component 2 */}
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="mini-component-placeholder">
-                                    {/* component 3 */}
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="mini-component-placeholder">
-                                    {/*  component 4 */}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <ResourcesAndVideos />
                 </div>
             </div>
         </div>
