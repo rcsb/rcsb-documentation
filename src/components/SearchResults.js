@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SearchBar from './SearchBar'; 
 import './SearchResults.css'; // Custom styles
 
 const SEARCH_URL = 'http://localhost:8080/docs-search/search'; //TODO: Remove localhost for deployment; used only for local testing
@@ -183,7 +184,9 @@ const SearchResults = () => {
         <div className="container search-results">
             <h1>Search Results for "{query}"</h1>
             <div className="row">
-
+                <div className="col-lg-8 col-md-8 col-sm-12">
+                    <SearchBar />
+                </div>
             </div>
             <div className="row">
                 <div className="col-md-3">
