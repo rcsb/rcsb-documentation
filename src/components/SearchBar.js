@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Resources from './Resources';
-import ResourcesAndVideos from './ResourcesAndVideos'; 
-import data from '../resourcesData.json'; // Import the JSON data
 import './SearchBar.css'; // Custom styles
 
 const SUGGEST_URL_DOCUMENTS = 'http://localhost:8080/docs-search/query_suggestion?query='; //TODO: Remove localhost for deployment; used only for local testing
@@ -70,43 +67,32 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="container my-4">
-            <div className="row">
-                <div className="col-lg-8 col-md-8 col-sm-12">
-                    <h1 className="text-left mb-3">RCSB PDB Help</h1>
-                    <div className="input-group search-bar">
-                        <input type="text"
-                               className="form-control"
-                               onClick={handleInputClick}
-                               onChange={handleInputChange}
-                               onKeyDown={handleKeyDown}
-                               placeholder="Enter search terms(s), e.g. structure motif"
-                               autoComplete="off"
-                               spellCheck="false"
-                               autoFocus
-                               value={value} />
-                        <span className="input-group-btn">
-                            <button className="btn btn-primary search-button" onClick={handleButtonClick}>
-                                <i className="glyphicon glyphicon-search"></i>
-                            </button>
-                        </span>
-                        <span className="tooltip-icon" data-tooltip="Search for documentation"><i className="glyphicon glyphicon-info-sign"></i></span>
-                        {menuOpen && (
-                            <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
-                                {menuItems.map((item, i) => (
-                                    <li key={item} className={i === menuIndex ? 'active' : ''}>
-                                        <a href="#!" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </div>
-                    <Resources data={data} />
-                </div>
-                <div className="col-lg-4 col-md-4 col-sm-12">
-                    <ResourcesAndVideos />
-                </div>
-            </div>
+        <div className="input-group search-bar">
+            <input type="text"
+                    className="form-control"
+                    onClick={handleInputClick}
+                    onChange={handleInputChange}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Enter search terms(s), e.g. structure motif"
+                    autoComplete="off"
+                    spellCheck="false"
+                    autoFocus
+                    value={value} />
+            <span className="input-group-btn">
+                <button className="btn btn-primary search-button" onClick={handleButtonClick}>
+                    <i className="glyphicon glyphicon-search"></i>
+                </button>
+            </span>
+            <span className="tooltip-icon" data-tooltip="Search for documentation"><i className="glyphicon glyphicon-info-sign"></i></span>
+            {menuOpen && (
+                <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
+                    {menuItems.map((item, i) => (
+                        <li key={item} className={i === menuIndex ? 'active' : ''}>
+                            <a href="#!" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
