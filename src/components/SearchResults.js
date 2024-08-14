@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
 import './SearchResults.css'; // Custom styles
@@ -14,52 +14,8 @@ const SearchResults = () => {
     const [activeTab, setActiveTab] = useState('rcsbPdb');
     const [currentPage, setCurrentPage] = useState(1);
 
-    useEffect(() => {
-        const fetchResults = async () => {
-            try {
-                // Construct the request body
-                const requestBody = {
-                    query: encodeURIComponent(query),
-                    page: {
-                        size: 100, // Fetch 100 results
-                        current: 1
-                    }
-                };
-
-                // Make the POST request to fetch 100 results
-                const response = await fetch(SEARCH_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // Explicitly set content type otherwise gives 404
-                    },
-                    body: JSON.stringify(requestBody)
-                });
-                const data = await response.json();
-                const transformedData = transformData(data.results);
-                setResults(transformedData.results);
-                setNum(transformedData.num);
-                setLoading(false);
-
-                // Check if the initial tab has no results and switch to the next available tab
-                if (transformedData.num.rcsbPdb === 0) {
-                    if (transformedData.num.newsAnnouncements > 0) {
-                        setActiveTab('newsAnnouncements');
-                    } else if (transformedData.num.pdb101 > 0) {
-                        setActiveTab('pdb101');
-                    } else if (transformedData.num.all > 0) {
-                        setActiveTab('all');
-                    }
-                }
-            } catch (error) {
-                console.error('Error fetching search results:', error);
-                setLoading(false);
-            }
-        };
-
-        fetchResults();
-    }, [query]);
-
-    const transformData = (results) => {
+    // Memoized transformData function to avoid re-creating it on every render
+    const transformData = useCallback((results) => {
         const num = { rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 };
 
         const transformedResults = results.map((o) => {
@@ -118,7 +74,49 @@ const SearchResults = () => {
         num.all = num.rcsbPdb + num.newsAnnouncements + num.pdb101;
 
         return { results: transformedResults, num };
-    };
+    }, []);
+
+    useEffect(() => {
+        const fetchResults = async () => {
+            try {
+                const requestBody = {
+                    query: encodeURIComponent(query),
+                    page: {
+                        size: 100, // Fetch 100 results
+                        current: 1
+                    }
+                };
+
+                const response = await fetch(SEARCH_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json', // Explicitly set content type otherwise gives 404
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+                const data = await response.json();
+                const transformedData = transformData(data.results);
+                setResults(transformedData.results);
+                setNum(transformedData.num);
+                setLoading(false);
+
+                if (transformedData.num.rcsbPdb === 0) {
+                    if (transformedData.num.newsAnnouncements > 0) {
+                        setActiveTab('newsAnnouncements');
+                    } else if (transformedData.num.pdb101 > 0) {
+                        setActiveTab('pdb101');
+                    } else if (transformedData.num.all > 0) {
+                        setActiveTab('all');
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching search results:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchResults();
+    }, [query, transformData]); // Add transformData to the dependency array
 
     const getUrlTokens = (url) => {
         let a = url.split('/'),

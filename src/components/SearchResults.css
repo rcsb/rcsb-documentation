@@ -23,6 +23,10 @@
     text-decoration: underline;
 }
 
+.search-results h3 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
 /* Heading and link styling within search results */
 .search-results h3 a {
     text-decoration: none;
