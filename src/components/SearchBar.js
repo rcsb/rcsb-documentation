@@ -11,15 +11,6 @@ const SearchBar = () => {
     const [menuIndex, setMenuIndex] = useState(-1);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (value.length > 1) {
-            fetchSuggestions(value);
-        } else {
-            setMenuItems([]);
-            setMenuOpen(false);
-        }
-    }, [value]);
-
     const fetchSuggestions = useCallback(async (query) => {
         try {
             const response = await fetch(SUGGEST_URL_DOCUMENTS + encodeURIComponent(query));
@@ -31,6 +22,15 @@ const SearchBar = () => {
             console.error('Error fetching suggestions:', error);
         }
     }, []);
+
+    useEffect(() => {
+        if (value.length > 1) {
+            fetchSuggestions(value);
+        } else {
+            setMenuItems([]);
+            setMenuOpen(false);
+        }
+    }, [value, fetchSuggestions]);
 
     const handleInputChange = (e) => {
         setValue(e.target.value);
