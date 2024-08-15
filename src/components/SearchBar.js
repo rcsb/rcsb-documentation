@@ -65,25 +65,29 @@ const SearchBar = () => {
             handleSearch(value);
         }
     };
-
+    
     return (
-        <div className="input-group search-bar">
-            <input type="text"
+        <div className="search-bar-container">
+            <div className="input-group search-bar">
+                <input type="text"
                     className="form-control"
                     onClick={handleInputClick}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
-                    placeholder="Enter search terms(s), e.g. structure motif"
+                    placeholder="e.g. Structure Motif, Hemoglobin, Webinar"
                     autoComplete="off"
                     spellCheck="false"
                     autoFocus
                     value={value} />
-            <span className="input-group-btn">
-                <button className="btn btn-primary search-button" onClick={handleButtonClick}>
-                    <i className="glyphicon glyphicon-search"></i>
-                </button>
-            </span>
-            <span className="tooltip-icon" data-tooltip="Search for documentation"><i className="glyphicon glyphicon-info-sign"></i></span>
+                <span className="input-group-btn">
+                    <button className="btn btn-primary search-button" onClick={handleButtonClick}>
+                        <i className="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+                <span className="tooltip-icon" data-tooltip="Search for help resources, PDB-101 learning resources, and archived news items">
+                    <i className="glyphicon glyphicon-info-sign"></i>
+                </span>
+            </div>
             {menuOpen && (
                 <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
                     {menuItems.map((item, i) => (

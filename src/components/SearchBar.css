@@ -1,22 +1,46 @@
+.search-bar-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin-left: 0px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
 .search-bar .form-control,
 .search-bar .btn {
   height: 45px; /* Set a consistent height for the input and button */
+  font-size: 16px;
+}
+
+.search-bar .form-control {
+  flex: 1;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-style: italic;
 }
 
 .search-bar .btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  background-color: #325880; /* Matches the button color from the prototype */
+  color: #fff;
 }
 
-.tooltip-icon {
-  margin-left: 10px;
+.search-bar-container .tooltip-icon {
+  margin-left: 40px;
   cursor: pointer;
   position: relative;
-  color: #337ab7;
+  color: #325880;
 }
 
-.tooltip-icon::after {
+.search-bar-container .tooltip-icon::after {
   content: attr(data-tooltip);
   position: absolute;
   bottom: 100%;
@@ -33,7 +57,7 @@
   z-index: 1000;
 }
 
-.tooltip-icon:hover::after {
+.search-bar-container .tooltip-icon:hover::after {
   opacity: 1;
   visibility: visible;
 }
@@ -43,4 +67,19 @@
   margin-top: 10px;
   color: #337ab7;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .search-bar-container {
+      padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar-container {
+      max-width: 100%;
+  }
+  .tooltip-icon {
+      display: none; /* Hide the tooltip icon on smaller screens if necessary */
+  }
 }
