@@ -13,10 +13,17 @@ const HomePage = () => {
         <div className="col-lg-8 col-md-8 col-sm-12">
           <h1 className="text-left mb-3">RCSB PDB Help</h1>
           <SearchBar />
-          <Resources data={data} />
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
           <HelpMenu />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-8 col-md-8 col-sm-12">
+          <Resources data={data} />
+        </div>
+        <div className="col-lg-4 col-md-4 col-sm-12">
+          <ResourcesAndVideos />
         </div>
       </div>
     </div>
