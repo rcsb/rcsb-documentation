@@ -2,6 +2,7 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import Resources from './Resources';
 import ResourcesAndVideos from './ResourcesAndVideos';
+import HelpMenu from './HelpMenu';
 import data from '../resourcesData.json'; // Import the JSON data
 // import './HomePage.css'; // Custom styles for the homepage
 
@@ -15,7 +16,7 @@ const HomePage = () => {
           <Resources data={data} />
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
-          <ResourcesAndVideos />
+          <HelpMenu />
         </div>
       </div>
     </div>

@@ -1,0 +1,21 @@
+.small-menu {
+    padding-top: 50px;
+    font-size: 100%;
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .divider {
+    color: #5E5D5D;
+    padding: 0 8px;
+  }
+  
+  .small-menu a {
+    color: #325880;
+    text-decoration: none;
+  }
+  
+  .small-menu a:hover {
+    text-decoration: underline;
+  }
+  
