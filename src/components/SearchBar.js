@@ -68,7 +68,7 @@ const SearchBar = () => {
     
     return (
         <div className="search-bar-container">
-            <div className="input-group search-bar">
+            <div className="search-bar">
                 <input type="text"
                     className="form-control"
                     onClick={handleInputClick}
@@ -79,17 +79,15 @@ const SearchBar = () => {
                     spellCheck="false"
                     autoFocus
                     value={value} />
-                <span className="input-group-btn">
-                    <button className="btn btn-primary search-button" onClick={handleButtonClick}>
-                        <i className="glyphicon glyphicon-search"></i>
-                    </button>
-                </span>
+                <button className="search-button" onClick={handleButtonClick}>
+                    Search
+                </button>
                 <span className="tooltip-icon" data-tooltip="Search for help resources, PDB-101 learning resources, and archived news items">
                     <i className="glyphicon glyphicon-info-sign"></i>
                 </span>
             </div>
             {menuOpen && (
-                <ul className="dropdown-menu w-100" style={{ display: 'block', position: 'absolute', top: '100%' }}>
+                <ul className="dropdown-menu">
                     {menuItems.map((item, i) => (
                         <li key={item} className={i === menuIndex ? 'active' : ''}>
                             <a href="#!" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />

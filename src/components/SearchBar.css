@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 600px;
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .search-bar {
@@ -10,31 +10,32 @@
   align-items: center;
 }
 
-.search-bar .form-control,
-.search-bar .btn {
-  height: 45px; /* Set a consistent height for the input and button */
-  font-size: 16px;
-}
-
 .search-bar .form-control {
   flex: 1;
+  height: 45px;
+  font-size: 16px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  font-style: italic;
+
 }
 
-.search-bar .btn {
+.search-bar .search-button {
+  height: 45px;
+  background-color: #325880;
+  color: #fff;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: #325880; /* Matches the button color from the prototype */
-  color: #fff;
+  padding: 0 20px; /* Added padding for better appearance */
+  font-size: 16px;
+  
 }
 
 .search-bar-container .tooltip-icon {
-  margin-left: 40px;
+  margin-left: 5px;
   cursor: pointer;
   position: relative;
   color: #325880;
@@ -43,9 +44,9 @@
 .search-bar-container .tooltip-icon::after {
   content: attr(data-tooltip);
   position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 10%;
+  left: 10%;
+  transform: translateX(10px) translateY(-50%);
   white-space: nowrap;
   background-color: #000;
   color: #fff;
@@ -62,24 +63,24 @@
   visibility: visible;
 }
 
-.related-faqs {
+.dropdown-menu {
+  width: 60%;
   display: block;
-  margin-top: 10px;
-  color: #337ab7;
-  text-decoration: underline;
+  position: absolute;
+  top: 100%;
 }
 
 @media (max-width: 768px) {
   .search-bar-container {
-      padding: 0 15px;
+    padding: 0 15px;
   }
 }
 
 @media (max-width: 480px) {
   .search-bar-container {
-      max-width: 100%;
+    max-width: 100%;
   }
   .tooltip-icon {
-      display: none; /* Hide the tooltip icon on smaller screens if necessary */
+    display: none;
   }
 }
