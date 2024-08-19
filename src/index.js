@@ -12,7 +12,7 @@ const NotFound = () => (
 
 const AppContent = () => {
   return (
-    <main className="container mt-5">
+    <main className="doc-container mt-5">
       <Routes>
         {routes.map((route, index) => (
           <Route 
@@ -27,10 +27,12 @@ const AppContent = () => {
   );
 };
 
+//Set the global variable for basename
+const basename =window.__DOCUMENTATION_BASEROUTE__ || '';
 const App = () => {
   return (
     <ErrorBoundary>
-      <Router basename="/doc-search">
+      <Router basename={basename}>
         <AppContent />
       </Router>
     </ErrorBoundary>
@@ -40,7 +42,7 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App basename={basename} />
   </React.StrictMode>
 );
 

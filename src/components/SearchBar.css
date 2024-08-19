@@ -63,7 +63,7 @@
   visibility: visible;
 }
 
-.dropdown-menu {
+.search-bar-container .dropdown-menu {
   width: 60%;
   display: block;
   position: absolute;
