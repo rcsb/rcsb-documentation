@@ -90,7 +90,7 @@ const SearchBar = () => {
                 <ul className="dropdown-menu">
                     {menuItems.map((item, i) => (
                         <li key={item} className={i === menuIndex ? 'active' : ''}>
-                            <a href="#!" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
+                            <a href="" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
                         </li>
                     ))}
                 </ul>
