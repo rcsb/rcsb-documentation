@@ -47,11 +47,19 @@ function DocumentationPage() {
 
     return (
         <div>
-            <Menu menu={menu} />
-            <div>
-                <h1>{content.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: content.html }} />
+            <div className="container">
+            <div className="row">
+                <div className="col-lg-3 col-md-4 col-sm-12">
+                    <Menu menu={menu} />
+                </div>
+                <div className="col-lg-9">
+                    <div>
+                        <h1>{content.title}</h1>
+                        <div dangerouslySetInnerHTML={{ __html: content.html }} />
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     );
 }
