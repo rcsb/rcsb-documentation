@@ -8,7 +8,7 @@ import {
     getMenuObj,
     getMenuPath
 } from '../utils/util.js';
-import './DocumentationPage.css';
+import './DocumentationPage.css'; 
 
 function DocumentationPage() {
     const { '*': docId } = useParams();
@@ -33,9 +33,8 @@ function DocumentationPage() {
             setGroupMap(group_idMap);
             const path = getMenuPath(item, groupNameMap);
             setMenuPath(path);
-            setContent(item);
             setCurrentDocId(docId);
-            console.log("Content set with item:", item);
+            loadContent(item); // Trigger content load immediately after setting the item
         } else if (!docId && index.length > 0) {
             console.log("Navigating to first item:", index[1].href);
             navigate(index[1].href);
@@ -44,32 +43,32 @@ function DocumentationPage() {
         }
     }, [docId, navigate]);
 
+    const loadContent = async (item) => {
+        try {
+            const response = await fetch(`${CONTENT_URL}/${ENV}/${item._id}`);
+            const data = await response.json();
+            if (data) {
+                setContent({
+                    ...item,
+                    html: data.html,
+                    lastUpdatedStr: new Date(data.lastUpdated).toLocaleDateString('en-US'),
+                });
+                console.log("Content loaded for docId:", item.href, data);
+            } else {
+                console.error("No data returned for item:", item._id);
+            }
+        } catch (error) {
+            console.error("Error fetching content for item:", item._id, error);
+        }
+    };
+
     const { loading, error } = useFetch(`${CONTENT_URL}/${ENV}/by-top-id/${ROOT_ID}`, onFetchSuccess);
 
     useEffect(() => {
         if (docId && menu.length > 0 && currentDocId !== docId) {
             const item = menu.find(node => node.href === `/docs/${docId}`);
             if (item) {
-                const loadContent = async () => {
-                    try {
-                        const response = await fetch(`${CONTENT_URL}/${ENV}/${item._id}`);
-                        const data = await response.json();
-                        if (data) {
-                            setContent({
-                                ...item,
-                                html: data.html,
-                                lastUpdatedStr: new Date(data.lastUpdated).toLocaleDateString('en-US'),
-                            });
-                            console.log("Content loaded for docId:", docId, data);
-                        } else {
-                            console.error("No data returned for docId:", docId);
-                        }
-                    } catch (error) {
-                        console.error("Error fetching content for docId:", docId, error);
-                    }
-                };
-
-                loadContent();
+                loadContent(item);
                 setMenuPath(getMenuPath(item, groupMap));
                 setCurrentDocId(docId); // Ensure the current docId is updated to avoid re-fetching
             }
