@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export function useFetch(url, onSuccess) {
     const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export function useFetch(url, onSuccess) {
             }
         };
         fetchData();
-    }, [url, onSuccess]);
+    }, [url]);  // Only re-run if the URL changes
 
     return { loading, error };
 }

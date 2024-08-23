@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { CONTENT_URL, ENV, ROOT_ID } from '../constants';
 import Menu from './Menu';
@@ -8,7 +8,7 @@ import {
     getMenuObj,
     getMenuPath
 } from '../utils/util.js';
-import './DocumentationPage.css'; 
+import './DocumentationPage.css';
 
 function DocumentationPage() {
     const { '*': docId } = useParams();
@@ -17,8 +17,9 @@ function DocumentationPage() {
     const [content, setContent] = useState(null);
     const [groupMap, setGroupMap] = useState({});
     const [menuPath, setMenuPath] = useState('');
+    const [currentDocId, setCurrentDocId] = useState(null);
 
-    const initializeIndex = (data) => {
+    const onFetchSuccess = useCallback((data) => {
         console.log("Initializing index with data:", data);
         const { index, group_idMap, groupNameMap, hrefMap, item_idMap } = setIndex(data);
         console.log("Index initialized:", index);
@@ -33,6 +34,7 @@ function DocumentationPage() {
             const path = getMenuPath(item, groupNameMap);
             setMenuPath(path);
             setContent(item);
+            setCurrentDocId(docId);
             console.log("Content set with item:", item);
         } else if (!docId && index.length > 0) {
             console.log("Navigating to first item:", index[1].href);
@@ -40,12 +42,12 @@ function DocumentationPage() {
         } else {
             console.error("Item not found for docId:", docId);
         }
-    };
+    }, [docId, navigate]);
 
-    useFetch(`${CONTENT_URL}/${ENV}/by-top-id/${ROOT_ID}`, initializeIndex);
+    const { loading, error } = useFetch(`${CONTENT_URL}/${ENV}/by-top-id/${ROOT_ID}`, onFetchSuccess);
 
     useEffect(() => {
-        if (docId && menu.length > 0) {
+        if (docId && menu.length > 0 && currentDocId !== docId) {
             const item = menu.find(node => node.href === `/docs/${docId}`);
             if (item) {
                 const loadContent = async () => {
@@ -66,16 +68,16 @@ function DocumentationPage() {
                         console.error("Error fetching content for docId:", docId, error);
                     }
                 };
-    
+
                 loadContent();
                 setMenuPath(getMenuPath(item, groupMap));
-            } else {
-                console.error("Item not found in menu for docId:", docId);
+                setCurrentDocId(docId); // Ensure the current docId is updated to avoid re-fetching
             }
         }
-    }, [docId, menu, groupMap]);
+    }, [docId, menu, groupMap, currentDocId]);
 
-    if (!menu.length) return <p>Loading...</p>;
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Oops, an error occurred while loading the documentation.</p>;
     if (!content) return <p>Oops, looks like this page does not exist. Try going back to the homepage.</p>;
 
     return (
