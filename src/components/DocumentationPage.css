@@ -1,0 +1,42 @@
+.menu-path {
+    color: #666;
+}
+
+.item-info {
+    font-style: italic;
+    font-size: 12px;
+    color: #888;
+}
+
+a.content-anchor {
+    display: block;
+    position: relative;
+    visibility: hidden;
+    top: -60px;
+}
+
+table.content-resources {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table.content-resources td {
+    border: 1px solid #ddd;
+    vertical-align: top;
+    padding: 5px;
+}
+
+td.content-img-caption {
+    font-size: 12px;
+    font-style: italic;
+    padding: 5px 0;
+}
+
+img.content-img-border {
+    border: 1px solid #ccc;
+}
+
+.ekko-lightbox .modal-dialog {
+    width: auto;
+    max-width: 1170px;
+}
