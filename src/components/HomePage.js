@@ -6,7 +6,7 @@ import HelpMenu from './HelpMenu';
 import data from '../resourcesData.json'; // Import the JSON data
 // import './HomePage.css'; // Custom styles for the homepage
 
-const HomePage = () => {
+const HomePage = ( {basename} ) => {
   return (
     <div className="container my-4">
       <div className="row">
@@ -20,7 +20,7 @@ const HomePage = () => {
       </div>
       <div className="row">
         <div className="col-lg-8 col-md-8 col-sm-12">
-          <Resources data={data} />
+          <Resources data={data} basename={basename}/>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
           <ResourcesAndVideos />

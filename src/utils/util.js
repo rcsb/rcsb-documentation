@@ -86,7 +86,7 @@ export function rootToIndex(root, depth, index, group_idMap, groupNameMap, hrefM
     }
 }
 
-export function setIndex(data) {
+export function setIndex(data, basename) {
     const index = [];
     const group_idMap = {};
     const groupNameMap = {};
@@ -117,7 +117,7 @@ export function setIndex(data) {
     });
 
     if (root) {
-        root.path = '/docs/';
+        root.path = `${basename}/docs/`;
         console.log("Root path set:", root.path);
         rootToIndex(root, -1, index, group_idMap, groupNameMap, hrefMap, item_idMap);
     } else {

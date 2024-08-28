@@ -1,7 +1,7 @@
 import React from 'react';
 import './Resources.css'; // Custom CSS for additional styles
 
-const Resources = ({ data }) => {
+const Resources = ({ data, basename }) => {
   return (
     <div className="resourcesContainer">
       {Object.keys(data).map((category, index) => (
@@ -17,7 +17,7 @@ const Resources = ({ data }) => {
               <ul className="list-unstyled">
                 {data[category].subheadings.map((item, i) => (
                   <li key={i} className="subheading-container">
-                    <a href={item.link}>{item.title}</a>
+                    <a href={`${basename}${item.link}`}>{item.title}</a>
                     <p className="subheading-description">{item.description}</p>
                   </li>
                 ))}

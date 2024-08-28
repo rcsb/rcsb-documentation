@@ -10,7 +10,8 @@ import {
 } from '../utils/util.js';
 import './DocumentationPage.css'; 
 
-function DocumentationPage() {
+function DocumentationPage( {basename} ) {
+    console.log("_________Using basename__________:", basename);
     const { '*': docId } = useParams();
     const navigate = useNavigate();
     const [menu, setMenu] = useState([]);
@@ -21,11 +22,11 @@ function DocumentationPage() {
 
     const onFetchSuccess = useCallback((data) => {
         console.log("Initializing index with data:", data);
-        const { index, group_idMap, groupNameMap, hrefMap, item_idMap } = setIndex(data);
+        const { index, group_idMap, groupNameMap, hrefMap, item_idMap } = setIndex(data, basename);
         console.log("Index initialized:", index);
 
         // Find the item using the full path
-        const item = index.find(node => node.href === `/docs/${docId}`);
+        const item = index.find(node => node.href === `${basename}/docs/${docId}`);
 
         if (item) {
             const { menu } = getMenuObj(index, item);
@@ -41,7 +42,7 @@ function DocumentationPage() {
         } else {
             console.error("Item not found for docId:", docId);
         }
-    }, [docId, navigate]);
+    }, [docId, navigate, basename]);
 
     const loadContent = async (item) => {
         try {
@@ -66,14 +67,14 @@ function DocumentationPage() {
 
     useEffect(() => {
         if (docId && menu.length > 0 && currentDocId !== docId) {
-            const item = menu.find(node => node.href === `/docs/${docId}`);
+            const item = menu.find(node => node.href === `${basename}/docs/${docId}`);
             if (item) {
                 loadContent(item);
                 setMenuPath(getMenuPath(item, groupMap));
                 setCurrentDocId(docId); // Ensure the current docId is updated to avoid re-fetching
             }
         }
-    }, [docId, menu, groupMap, currentDocId]);
+    }, [docId, menu, groupMap, currentDocId, basename]);
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Oops, an error occurred while loading the documentation.</p>;
