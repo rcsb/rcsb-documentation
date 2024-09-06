@@ -1,7 +1,7 @@
 {
   "name": "cb-documentation",
   "private": false,
-  "version": "0.1.80",
+  "version": "0.3.01",
   "main": "src/index.js",
   "files": [
     "build"
