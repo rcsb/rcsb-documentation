@@ -1,3 +1,4 @@
+import React from 'react'; 
 import HomePage from './components/HomePage';
 import SearchResults from './components/SearchResults';
 
