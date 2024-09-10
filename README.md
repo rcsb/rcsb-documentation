@@ -4,9 +4,6 @@ This project is a React application that has been configured with Webpack for bu
 
 The **RCSB Documentation Module** is a React-based project designed to serve as a dynamic and user-friendly landing page for hosting documentation related to [RCSB.org](https://www.rcsb.org/). This module is intended to be integrated within the **RCSB Sierra** web application, providing an enhanced user experience and streamlining access to information pertinent to the features and data available on RCSB.org.
 
-
-The RCSB Documentation Module is a React-based project designed to serve as a dynamic and user-friendly landing page for hosting documentation related to [RCSB.org](https://www.rcsb.org/). This module is intended to be integrated within the RCSB Sierra web application, providing an enhanced user experience and streamlining access to information pertinent to the features and data available on RCSB.org.
-
 ## Installation
 
 You can install the RCSB Documentation Module via npm:
