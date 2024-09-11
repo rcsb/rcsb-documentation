@@ -301,7 +301,7 @@ function setAttributeDetails(req, item) {
     attributeDetails.schemas.forEach(schema => {
         const { headers, schema_name } = schema;
 
-        schema.display_name = u.ucFirst(schema_name) + ' Attributes';
+        schema.display_name = schema_name.substring(0, 1).toUpperCase() + schema_name.substring(1) + ' Attributes';
         const selectorItems = metadata[schema_name].selectorItems;
 
         selectorItems.forEach(si => {
@@ -317,7 +317,6 @@ function setAttributeDetails(req, item) {
                     obj.name = si.name;
 
                     if (si.type === 'item-nested') {
-                        //if (si.attribute === 'rcsb_binding_affinity.value') u.logJson({ selectorItem: si, attrObj }, 'setAttributeDetails')
 
                         let { nested_attribute, nested_attribute_value, units, range } = si;
 
