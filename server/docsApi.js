@@ -108,9 +108,16 @@ async function getItem(req, res, env) {
 
             if (loadItem) {
                 const item = await fetchItem(env, _id);
-                const imgPath = getImagePath(env, item, _id);
-                item.html = item.html.replace(/<IMG_PATH>/g, imgPath).replace(/https:\/\/www.rcsb.org/g, '');
-                item.lastUpdatedStr = new Date(item.lastUpdated).toLocaleDateString('en-US');
+
+                // Special case: Set attribute details if the URL matches
+                if (reqUrl === '/docs/search-and-browse/advanced-search/attribute-details') {
+                    setAttributeDetails(req, item);
+                } else {
+                    const imgPath = getImagePath(env, item, _id);
+                    item.html = item.html.replace(/<IMG_PATH>/g, imgPath).replace(/https:\/\/www.rcsb.org/g, '');
+                    item.lastUpdatedStr = new Date(item.lastUpdated).toLocaleDateString('en-US');    
+                }
+
                 item.href = hrefMap[_id];
                 itemMap[_id] = item;
 
@@ -267,6 +274,96 @@ function getMenuObj(item) {
     return { groupMap, menu };
 }
 
+function setAttributeDetails(req, item) {
+    const metadata = req.app.locals.metadata
+        , UNITS = { // see definition in lib/js/search/src/constants.js
+        angstroms: 'Å'
+        , angstroms_cubed_per_dalton: 'Å³/Da'
+        , angstroms_squared: 'Å²'
+        , kelvins: 'K'
+        , kilodaltons: 'kDa'
+        , kilojoule_per_mole: 'kJ/mol'
+        , megahertz: 'MHz'
+        , daltons: 'Da'
+        , degrees: '°'
+        , nanomole: 'nM'
+        , per_mole: 'M\u207B\u00B9' // unicode <sup>-1</sup> - TODO replace other unicode chars with unicode equivalent
+    }
+        , attributeDetails = {
+        schemas: [
+            { schema_name: 'structure', headers: [] }
+            , { schema_name: 'chemical', headers: [] }
+        ]
+    };
+
+    //u.logJson(metadata.structure, 'setAttributeDetails: metadata.structure')
+
+    attributeDetails.schemas.forEach(schema => {
+        const { headers, schema_name } = schema;
+
+        schema.display_name = u.ucFirst(schema_name) + ' Attributes';
+        const selectorItems = metadata[schema_name].selectorItems;
+
+        selectorItems.forEach(si => {
+            if (si.type === 'header') {
+                headers.push({ name: si.name, attributes: [] });
+            } else {
+                const attrObj = metadata[schema_name].uiAttrMap[si.attribute]; // attrObj from metadata, where 'name' is schema name
+
+                if (attrObj) {
+                    const { attribute, description, type } = attrObj
+                        , obj = { attribute, description, type };
+
+                    obj.name = si.name;
+
+                    if (si.type === 'item-nested') {
+                        //if (si.attribute === 'rcsb_binding_affinity.value') u.logJson({ selectorItem: si, attrObj }, 'setAttributeDetails')
+
+                        let { nested_attribute, nested_attribute_value, units, range } = si;
+
+                        // assign values from selectorItem
+                        obj.nested_attribute = nested_attribute;
+
+                        if (units) obj.units = UNITS[units];
+                        if (range) {
+                            obj.min = range.min;
+                            obj.max = range.max;
+                        }
+
+                        const { nestedAttribute } = attrObj
+                            , context = nestedAttribute.contexts[nested_attribute_value]
+                            , { detail, examples } = context;
+
+                        // these values are not available in selectorItem, so assign from attrObj
+                        if (detail) obj.detail = detail;
+                        if (examples) obj.examples = examples;
+
+                    } else {
+                        const { units, examples, enumeration, is_iterable } = attrObj;
+                        let { min, max } = attrObj;
+
+                        if (units) obj.units = UNITS[units];
+                        if (examples) obj.examples = examples;
+                        if (enumeration) obj.enumeration = enumeration;
+                        if (is_iterable) obj.is_iterable = is_iterable;
+
+                        // check min, max for 0 otherwise they will not display in ui
+                        if (typeof min !== 'undefined' && typeof max !== 'undefined') {
+                            obj.min = '' + min;
+                            obj.max = '' + max;
+                        }
+                    }
+
+                    headers[headers.length - 1].attributes.push(obj);
+                }
+            }
+        });
+    });
+
+    item.attributeDetails = attributeDetails;
+    item.lastUpdatedStr = metadata['structure'].lastReleaseDate.long;
+}
+
 // Set parent group state for rendering
 function setParentGroupState(groupMap, o) {
     if (o.show) {
@@ -295,5 +392,6 @@ module.exports = {
     getMenuPath,
     returnData,
     getMenuObj,
+    setAttributeDetails,
     setParentGroupState,
 };
