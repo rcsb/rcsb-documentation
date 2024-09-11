@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js', // Entry point of your application
+  entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'bundle.js', // Output file
@@ -11,18 +11,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, // Match JavaScript and JSX files
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
+          options: {
+            cacheDirectory: true, // Improves build performance by caching the results of the Babel compilation
+          },
         },
       },
       {
-        test: /\.css$/, // Match CSS files
+        test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|gif|svg)$/, // Match image files
+        test: /\.(png|jpg|gif|svg)$/,
         type: 'asset/resource',
       },
     ],
@@ -31,14 +34,14 @@ module.exports = {
     extensions: ['.js', '.jsx'],
   },
   devServer: {
-    static: path.resolve(__dirname, 'dist'),
+    static: path.resolve(__dirname, 'build'),
     historyApiFallback: true, // Allows for using client-side routing with react-router
     port: 3000,
     open: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html', // Template HTML file
+      template: './public/index.html',
       filename: 'index.html',
     }),
   ],
