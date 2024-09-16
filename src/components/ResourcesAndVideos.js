@@ -21,8 +21,8 @@ const ResourcesAndVideos = () => {
           </div>
         </div>
         <div className="panel-body">
-          <p><a href="">Deposit Experimental Structures</a></p>
-          <p><a href="">Deposit Integrative Models</a></p>
+          <p><a href="https://deposit-2.wwpdb.org/deposition/" target='_blank'>Deposit Experimental Structures</a></p>
+          <p><a href="https://data.pdb-dev.org/" target='_blank'>Deposit Integrative Models</a></p>
         </div>
       </div>
 
@@ -43,11 +43,11 @@ const ResourcesAndVideos = () => {
           </div>
         </div>
         <div className="panel-body">
-          <p><a href="">Guide to PDB Data</a></p>
-          <p><a href="">Biological Assemblies</a></p>
-          <p><a href="">Small Molecule Ligands</a></p>
-          <p><a href="">RCSB PDB APIs</a></p>
-          <p><a href="">Training Courses</a></p>
+          <p><a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/introduction" target='_blank'>Guide to PDB Data</a></p>
+          <p><a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/biological-assemblies" target='_blank'>Biological Assemblies</a></p>
+          <p><a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/small-molecule-ligands" target='_blank'>Small Molecule Ligands</a></p>
+          <p><a href="https://pdb101.rcsb.org/learn/guide-to-understanding-pdb-data/introduction-to-rcsb-pdb-apis" target='_blank'>RCSB PDB APIs</a></p>
+          <p><a href="https://pdb101.rcsb.org/train/training-events" target='_blank'>Training Courses</a></p>
         </div>
       </div>
 
