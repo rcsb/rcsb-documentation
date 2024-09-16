@@ -1,62 +1,62 @@
 {
   "Structural Biology Data": {
-    "description": "Learn about the data types you can access on the RCSB.org website",
+    "description": "Data available on RCSB PDB website",
     "subheadings": [
       { "title": "3D Structures in the Protein Data Bank", "link": "/docs/general-help/organization-of-3d-structures-in-the-protein-data-bank", "description": "Data hierarchy within 3D macromolecules" },
       { "title": "Assessing Macromolecule Quality", "link": "/docs/general-help/assessing-the-quality-of-3d-structures", "description": "Agreement with experimental data and stereochemistry" },
       { "title": "Assessing Ligand Quality", "link": "/docs/general-help/ligand-structure-quality-in-pdb-structures", "description": "Agreement with experimental data and chemical parameters" },
-      { "title": "Computed Structure Models", "link": "/docs/general-help/computed-structure-models-and-rcsborg", "description": "AlphaFold and ModelArchive Data on RCSB.org" },
-      { "title": "Integrated External Resources", "link": "/docs/general-help/data-from-external-resources-integrated-into-rcsb-pdb", "description": "Data resources integrated with the structural data" }
+      { "title": "Computed Structure Models", "link": "/docs/general-help/computed-structure-models-and-rcsborg", "description": "Protein structure predictions available on RCSB.org" },
+      { "title": "Integrated External Resources", "link": "/docs/general-help/data-from-external-resources-integrated-into-rcsb-pdb", "description": "List of integrated biodata resourses" }
     ]
   },
   "Search Tools": {
-    "description": "Learn how to perform custom searches based on similar structure attributes",
+    "description": "Research-focused search tools",
     "subheadings": [
       { "title": "Sequence Similarity", "link": "/docs/search-and-browse/advanced-search/sequence-similarity-search", "description": "Similar protein, RNA or DNA sequences" },
       { "title": "Structure Similarity", "link": "/docs/search-and-browse/advanced-search/structure-similarity-search", "description": "Chains or assemblies with similar 3D shape" },
       { "title": "Chemical Similarity", "link": "/docs/search-and-browse/advanced-search/chemical-similarity-search", "description": "Small molecules with chemically similar structure" },
       { "title": "Sequence Motif", "link": "/docs/search-and-browse/advanced-search/sequence-motif-search", "description": "Sequences that share small, conserved regions" },
-      { "title": "Structure Motif", "link": "/docs/search-and-browse/advanced-search/structure-motif-search", "description": "Patterns of functional local structure e.g., catalytic sites" }
+      { "title": "Structure Motif", "link": "/docs/search-and-browse/advanced-search/structure-motif-search", "description": "Structures that share 3D arrangements of residues" }
     ]
   },
   "Advanced Searching": {
-    "description": "Combine different search criteria and search tools to create complex queries",
+    "description": "Combine multiple search criteria",
     "subheadings": [
-      { "title": "Advanced Searching", "link": "link1", "description": "Searching within specific fields and using Boolean operators" },
-      { "title": "Search By Attributes", "link": "link2", "description": "E.g., release date, resolution, experimental details, taxonomy" },
-      { "title": "Dealing With Redundancy", "link": "link3", "description": "Grouping options for search results" },
-      { "title": "Search Examples", "link": "link4", "description": "Examples of commonly executed search queries" },
-      { "title": "MyPDB", "link": "link5", "description": "Save your searches and receive weekly notifications" }
+      { "title": "Advanced Searching", "link": "/docs/search-and-browse/advanced-search/overview-advanced-search", "description": "Use AND, OR, NOT logic for complex queries" },
+      { "title": "Search By Attributes", "link": "/docs/search-and-browse/advanced-search/attribute-search", "description": "E.g., release date, resolution, taxonomy" },
+      { "title": "Dealing With Redundancy", "link": "/docs/grouping-structures/grouping-search-results", "description": "Grouping options for search results" },
+      { "title": "Search Examples", "link": "/docs/search-and-browse/advanced-search/search-examples", "description": "Common search query examples" },
+      { "title": "MyPDB", "link": "/docs/search-and-browse/mypdb", "description": "Save your searches and get weekly notifications" }
     ]
   },
   "Visualize": {
-    "description": "Create interactive visualizations of the 3D structural data",
+    "description": "Interactive 3D structure visualization",
     "subheadings": [
-      { "title": "Mol* (MolStar)", "link": "link1", "description": "Visualize structure data in 3D" },
-      { "title": "Ligand Interaction in 3D", "link": "link2", "description": "Interactions between small molecules and biomolecules" },
-      { "title": "Sequence Annotations in 3D", "link": "link3", "description": "Map sequence features onto the 3D structure of protein" },
-      { "title": "Sequence Alignments in 3D", "link": "link4", "description": "Superimpose multiple 3D structures" },
-      { "title": "Structure Alignments", "link": "link5", "description": "Align structures using a variety of established algorithms" }
+      { "title": "Biomolecule in 3D", "link": "/docs/3d-viewers/mol*/getting-started", "description": "View 3D structures in atomic detail" },
+      { "title": "Ligand Interaction in 3D", "link": "/docs/3d-viewers/mol*/faqs-scenarios#how-to-display-the-interactions-of-a-ligand-with-amino-acids-and-ligands-bound-nearby--from-the-structure-summary-page", "description": "Small molecule-biomolecule interactions" },
+      { "title": "Sequence Annotations in 3D", "link": "/docs/sequence-viewers/sequence-annotations-in-3d", "description": "Map protein sequence features to 3D structure" },
+      { "title": "Sequence Alignments in 3D", "link": "/docs/grouping-structures/explore-sequence-alignments-in-3d", "description": "Precomputed alignments and superimposed structures" },
+      { "title": "Structure Alignments", "link": "/docs/tools/pairwise-structure-alignment", "description": "Calculate and visualize accurate structure alignments" }
     ]
   },
   "Explore": {
-    "description": "Related structural or functional classifications for data exploration",
+    "description": "Detailed biostructure information",
     "subheadings": [
-      { "title": "Structure Summary Pages", "link": "link1", "description": "Portal to information about individual 3D Structures" },
-      { "title": "Ligands of Interest (LOIs)", "link": "link2", "description": "Ligands designated as focus of research in an experiment" },
-      { "title": "Group Summary", "link": "link3", "description": "Structural and functional annotations for groups of related structures" },
-      { "title": "Annotations Browsers", "link": "link4", "description": "Browse the PDB by community established classifications" },
-      { "title": "Symmetry Resources", "link": "link5", "description": "Tools explore protein symmetry information in PDB structures" }
+      { "title": "Structure Summary Pages", "link": "/docs/exploring-a-3d-structure/overview", "description": "Provide key detils for individual 3D structures" },
+      { "title": "Ligands of Interest (LOIs)", "link": "/docs/exploring-a-3d-structure/ligands", "description": "Small molecules identified as a focus of research" },
+      { "title": "Group Summary", "link": "/docs/grouping-structures/group-summary-pages", "description": "Explore groups of related structures" },
+      { "title": "Annotations Browsers", "link": "/docs/search-and-browse/browse-options/overview-browse", "description": "3D structures classified by established ontologies" },
+      { "title": "Symmetry Resources", "link": "/docs/general-help/symmetry-resources-in-the-pdb", "description": "Explore symmetry in biological assemblies" }
     ]
   },
   "Programmatic Access": {
-    "description": "Learn about data download options and RCSB PDB's APIs",
+    "description": "Data download options and APIs",
     "subheadings": [
-      { "title": "RCSB PDB API Services", "link": "link1", "description": "Overview of RCSB PDB search, alignments, and coordinates APIs" },
-      { "title": "RCSB PDB API Rate Limits", "link": "link2", "description": "Rate-limiting restrictions applied to API usage" },
-      { "title": "Download PDB Archive", "link": "link3", "description": "Protocols for download of the PDB archive" },
-      { "title": "Batch Download Script", "link": "link4", "description": "Download multiple PDB archive files using a simple script" },
-      { "title": "Data Offered by RCSB PDB", "link": "link5", "description": "List of types of files offered for PDB entries" }
+      { "title": "RCSB PDB API Services", "link": "/docs/programmatic-access/web-services-overview", "description": "Programmatic search and data retrieval" },
+      { "title": "RCSB PDB API Rate Limits", "link": "/docs/programmatic-access/web-services-overview#api-rate-limits", "description": "API rate-limiting restrictions" },
+      { "title": "Download PDB Archive", "link": "/docs/programmatic-access/file-download-services#the-pdb-archive", "description": "PDB archive download protocols" },
+      { "title": "Batch Download Script", "link": "/docs/programmatic-access/batch-downloads-with-shell-script", "description": "Download multiple files with a script" },
+      { "title": "Data Offered by RCSB PDB", "link": "/docs/programmatic-access/file-download-services#other-downloads-offered-by-rcsb-pdb", "description": "Types of files offered for PDB entries" }
     ]
   }
 }
