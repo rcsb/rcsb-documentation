@@ -10,7 +10,7 @@ const HelpMenu = ({ basename }) => {
     <div style={{ marginTop: '-20px' }}>
       <div className="small-menu">
         <p>
-          <a href={`${basename}/`}
+          <a href={`${basename}`}
           style={{ opacity: isHomePage ? '50%' : '100%', pointerEvents: isHomePage ? 'none' : 'auto' }}
           >
             <i className="fa fa-home" aria-hidden="true"></i> Help Topics

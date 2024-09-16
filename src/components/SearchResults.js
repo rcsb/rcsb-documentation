@@ -228,7 +228,7 @@ const SearchResults = () => {
                                                         <a href={o.url}>{o.url_tokens}</a>
                                                     </div>
                                                     <h3><a href={o.url}>{o.title}</a></h3>
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -246,7 +246,7 @@ const SearchResults = () => {
                                                     </div>
                                                     <h3><a href={o.url}>{o.title}</a></h3>
                                                     {o.release_date && <p>{o.release_date}</p>}
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -269,7 +269,7 @@ const SearchResults = () => {
                                                             {o.title.replace('PDB-101: ', '')}
                                                         </a>
                                                     </h3>
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -292,7 +292,7 @@ const SearchResults = () => {
                                                             {o.title}
                                                         </a>
                                                     </h3>
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
