@@ -12,11 +12,13 @@ const ResourcesAndVideos = () => {
               <h3 className="panel-title">Deposition Resources</h3>
             </div>
             <div className="col-md-4 col-sm-2 col-xs-2">
-              <img
-                src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/wwpdb-truncated.png"
-                className="img-responsive"
-                alt="Deposition Resources Icon"
-              />
+              <a href="https://www.wwpdb.org/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/wwpdb-truncated.png"
+                  className="img-responsive"
+                  alt="Deposition Resources Icon"
+                />
+            </a>
             </div>
           </div>
         </div>
@@ -34,11 +36,13 @@ const ResourcesAndVideos = () => {
               <h3 className="panel-title">Learning Resources</h3>
             </div>
             <div className="col-md-4 col-sm-2 col-xs-2">
-              <img
-                src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/pdb101-truncated.png"
-                className="img-responsive"
-                alt="Learning Resources Icon"
-              />
+              <a href="https://pdb101.rcsb.org/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/pdb101-truncated.png"
+                  className="img-responsive"
+                  alt="Learning Resources Icon"
+                />
+              </a>  
             </div>
           </div>
         </div>

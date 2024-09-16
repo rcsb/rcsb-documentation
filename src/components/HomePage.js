@@ -15,7 +15,7 @@ const HomePage = ( {basename} ) => {
           <SearchBar />
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12">
-          <HelpMenu />
+          <HelpMenu basename={basename}/>
         </div>
       </div>
       <div className="row">
