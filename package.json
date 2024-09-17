@@ -1,17 +1,17 @@
 {
   "name": "@rcsb/rcsb-documentation",
   "private": false,
-  "version": "0.0.05",
+  "version": "0.0.07",
   "main": "build/bundle.js",
   "files": [
-    "build", 
-    "server/docsApi.js" 
+    "build",
+    "server/docsApi.js"
   ],
   "dependencies": {
     "node-fetch": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.25.1"
+    "react-router-dom": "^6.26.2"
   },
   "scripts": {
     "start": "webpack serve --mode development",

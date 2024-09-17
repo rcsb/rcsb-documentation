@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
+import HelpMenu from './HelpMenu';
 import './SearchResults.css'; // Custom styles
 
 const SEARCH_URL = 'http://localhost:8080/docs-search/search'; //TODO: Remove localhost for deployment; used only for local testing
 const RESULTS_PER_PAGE = 25;
 
-const SearchResults = () => {
+const SearchResults = ( {basename} ) => {
     const { query } = useParams();
     const [results, setResults] = useState([]);
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
@@ -180,7 +181,15 @@ const SearchResults = () => {
 
     return (
         <div className="container search-results">
-            <h1>Search Results for "{query}"</h1>
+            <div className="row">
+                <div className="col-md-9">
+                    <h1>Search Results for "{query}"</h1>
+                </div>    
+                <div className="col-md-3">
+                    <HelpMenu basename={basename}/>
+                </div> 
+            </div>
+            
             <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-12">
                     <SearchBar />

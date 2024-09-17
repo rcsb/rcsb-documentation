@@ -5,12 +5,13 @@ import './HelpMenu.css';
 const HelpMenu = ({ basename }) => {
   const location = useLocation();
   const isHomePage = location.pathname === `${basename}/` || location.pathname === `${basename}`;
+  const helpTopicsHref = basename || '/'; // Set the correct href for "Help Topics" based on basename
 
   return (
     <div style={{ marginTop: '-20px' }}>
       <div className="small-menu">
         <p>
-          <a href={`${basename}`}
+          <a href={helpTopicsHref}
           style={{ opacity: isHomePage ? '50%' : '100%', pointerEvents: isHomePage ? 'none' : 'auto' }}
           >
             <i className="fa fa-home" aria-hidden="true"></i> Help Topics
