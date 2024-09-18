@@ -4,7 +4,7 @@ import SearchResults from './components/SearchResults';
 
 const routes = [
   { path: '/', element: <HomePage basename={window.__DOCUMENTATION_BASEROUTE__ || ''} /> },
-  { path: '/:query', element: <SearchResults /> }
+  { path: '/:query', element: <SearchResults basename={window.__DOCUMENTATION_BASEROUTE__ || ''}/> }
 ];
 
 export default routes;
