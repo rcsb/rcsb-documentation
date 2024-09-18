@@ -4,7 +4,9 @@ import './HelpMenu.css';
 
 const HelpMenu = ({ basename }) => {
   const location = useLocation();
-  const isHomePage = location.pathname === `${basename}/` || location.pathname === `${basename}`;
+  
+  const isHomePage = (basename === '' && location.pathname === '/') || 
+                     (basename !== '' && location.pathname === '/')
   const helpTopicsHref = basename || '/'; // Set the correct href for "Help Topics" based on basename
 
   return (

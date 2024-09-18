@@ -20,7 +20,7 @@ const HomePage = ( {basename} ) => {
       </div>
       <div className="row">
         <div className="col-lg-9 col-md-9 col-sm-12">
-          <Resources data={data} basename={basename}/>
+          <Resources data={data} />
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12">
           <ResourcesAndVideos />
