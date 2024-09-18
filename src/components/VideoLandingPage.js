@@ -8,14 +8,14 @@ const VideoLandingPage = () => {
   const handleCloseVideo = () => setSelectedVideo(null);
 
   return (
-    <div className="video-landing-page">
+    <div className="container my-4 video-landing-page">
       {videoPanels.map((panel, panelIndex) => {
         const [showAll, setShowAll] = useState(false);
         const displayedVideos = showAll ? panel.videos : panel.videos.slice(0, 4);
 
         return (
           <div key={panelIndex} className="video-section" id={panel.topic}> 
-            <div className="row">
+            <div className="row mb-3">
               <div className="col-md-8">
                 <h3>{panel.title}</h3>
               </div>
@@ -34,7 +34,7 @@ const VideoLandingPage = () => {
                   <img
                     src={video.image}
                     alt={video.title}
-                    className="video-thumbnail"
+                    className="video-thumbnail img-responsive"
                     onClick={() => setSelectedVideo(video)}
                   />
                   <p>{video.title}</p>
@@ -47,15 +47,16 @@ const VideoLandingPage = () => {
 
       {selectedVideo && (
         <div className="video-overlay" onClick={handleCloseVideo}>
-          <div className="video-player">
-            <iframe
-              src={`https://www.youtube.com/embed/${selectedVideo.id}`}
-              title={selectedVideo.title}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              width="800"
-            ></iframe>
+          <div className="video-player-container">
+            <div className="embed-responsive embed-responsive-16by9">
+              <iframe
+                src={`https://www.youtube.com/embed/${selectedVideo.id}`}
+                title={selectedVideo.title}
+                className="embed-responsive-item"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
             <button className="btn btn-link close-video-btn" onClick={handleCloseVideo}>Close</button>
           </div>
         </div>
