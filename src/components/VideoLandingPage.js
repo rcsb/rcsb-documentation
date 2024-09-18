@@ -1,17 +1,27 @@
 import React, { useState } from 'react';
 import videoPanels from '../videoData.json'; 
 import './VideoLandingPage.css'; 
+import HelpMenu from './HelpMenu'; 
 
-const VideoLandingPage = () => {
+const VideoLandingPage = ({ basename }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const handleCloseVideo = () => setSelectedVideo(null);
 
   return (
     <div className="container my-4 video-landing-page">
-      {videoPanels.map((panel, panelIndex) => {
-        const [showAll, setShowAll] = useState(false);
-        const displayedVideos = showAll ? panel.videos : panel.videos.slice(0, 4);
+        <div className="row mb-4">
+            <div className="col-lg-9 col-md-9 col-sm-12">
+            <h2 className="text-left">Video Tutorials</h2>
+            </div>
+            <div className="col-lg-3 col-md-3 col-sm-12">
+            <HelpMenu basename={basename} />
+            </div>
+        </div>
+
+        {videoPanels.map((panel, panelIndex) => {
+            const [showAll, setShowAll] = useState(false);
+            const displayedVideos = showAll ? panel.videos : panel.videos.slice(0, 4);
 
         return (
           <div key={panelIndex} className="video-section" id={panel.topic}> 
