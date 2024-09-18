@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './ResourcesAndVideos.css' 
 
 const ResourcesAndVideos = () => {
@@ -68,10 +69,10 @@ const ResourcesAndVideos = () => {
           </div>
         </div>
         <div className="panel-body">
-          <p><a href="">Search and Browse</a></p>
-          <p><a href="">Visualize 3D Structures</a></p>
-          <p><a href="">Analyze 3D Structural Data</a></p>
-          <p><a href="">APIs</a></p>
+          <p><Link to="/videos#search-and-browse">Search and Browse</Link></p>
+          <p><Link to="/videos#visualize-3d-structures">Visualize 3D Structures</Link></p>
+          <p><Link to="/videos#analyze-3d-structural-data">Analyze 3D Structural Data</Link></p>
+          <p><Link to="/videos#apis">APIs</Link></p>
         </div>
       </div>
     </div>
