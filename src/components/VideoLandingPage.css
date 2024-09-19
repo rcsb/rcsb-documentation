@@ -6,9 +6,26 @@
     margin-bottom: 40px;
   }
   
+  .video-section-header {
+    background-color: #325880;  
+    color: white;             
+    padding: 10px;            
+    border-radius: 5px;       
+    display: flex;             
+    justify-content: space-between; 
+    align-items: center;    
+  }
+  
   .video-list {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 0;         
+  }
+  
+  .video-list-container {
+    border: 2px solid #ddd;  
+    padding: 15px;
+    border-radius: 5px;
   }
   
   .video-item {
@@ -25,7 +42,11 @@
   
   .show-all-btn {
     font-size: 14px;
+    color: white;
+    background: none;
+    border: none;
     cursor: pointer;
+    text-decoration: underline;
   }
   
   .video-overlay {
