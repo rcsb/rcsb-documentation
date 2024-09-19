@@ -11,7 +11,7 @@ const VideoLandingPage = ({ basename }) => {
   return (
     <div className="container my-4 video-landing-page">
       {/* Title and HelpMenu Section */}
-      <div className="row mb-4 align-items-center">
+      <div className="row mb-4 align-items-center video-tutorials-header">
         <div className="col-lg-9 col-md-9 col-sm-12">
           <h2 className="text-left">Video Tutorials</h2>
         </div>
@@ -23,39 +23,39 @@ const VideoLandingPage = ({ basename }) => {
       {/* Video Panels Section */}
       {videoPanels.map((panel, panelIndex) => {
         const [showAll, setShowAll] = useState(false);
-        const displayedVideos = showAll ? panel.videos : panel.videos.slice(0, 4);
+        const displayedVideos = showAll ? panel.videos : panel.videos.slice(0, 5); // Display 5 videos per row
 
         return (
           <div key={panelIndex} className="video-section mb-4" id={panel.topic}>
-            {/* Header Row */}
-            <div className="row mb-3 align-items-center">
-              {/* Apply the custom class to the col-md-4 */}
-              <div className="col-md-4 video-section-header">
-                <h3 className="panel-title">{panel.title}</h3>
-                {panel.videos.length > 4 && (
-                  <button className="show-all-btn" onClick={() => setShowAll(!showAll)}>
+            <div className="row mb-3 align-items-center video-panel-header">
+              <div className="col-md-8">
+                <h3 className="video-section-title">{panel.title}</h3>
+              </div>
+              {panel.videos.length > 5 && (
+                <div className="col-md-4 text-right">
+                  <button className="video-show-all-btn" onClick={() => setShowAll(!showAll)}>
                     {showAll ? 'Show Less' : 'Show All'}
                   </button>
-                )}
-              </div>
+                </div>
+              )}
             </div>
 
-            {/* Video section with a border */}
-            <div className="video-list-container">
-              <div className="row video-list">
-                {displayedVideos.map((video, videoIndex) => (
-                  <div key={videoIndex} className="col-lg-3 col-md-4 col-sm-6 col-xs-12 video-item">
-                    <img
-                      src={video.image}
-                      alt={video.title}
-                      className="video-thumbnail img-responsive"
-                      onClick={() => setSelectedVideo(video)}
-                    />
-                    <p>{video.title}</p>
+            <div className="row">
+              {displayedVideos.map((video, videoIndex) => (
+                <div key={videoIndex} className="col-lg-2 col-md-4 col-sm-6 col-xs-12 video-item">
+                  <div className="video-thumbnail-container" onClick={() => setSelectedVideo(video)}>
+                    <img src={video.image} alt={video.title} className="video-thumbnail img-responsive" />
+                    <div className="video-duration">{video.duration}</div>
                   </div>
-                ))}
-              </div>
+                  <div className="video-metadata">
+                    <p className="video-title">{video.title}</p>
+                  </div>
+                </div>
+              ))}
             </div>
+
+            {/* Add horizontal line between sections except after the last section */}
+            {panelIndex < videoPanels.length - 1 && <hr className="video-divider" />}
           </div>
         );
       })}
@@ -72,7 +72,7 @@ const VideoLandingPage = ({ basename }) => {
                 allowFullScreen
               ></iframe>
             </div>
-            <button className="btn btn-link close-video-btn" onClick={handleCloseVideo}>Close</button>
+            <button className="video-close-btn" onClick={handleCloseVideo}>X</button>
           </div>
         </div>
       )}

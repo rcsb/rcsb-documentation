@@ -25,7 +25,12 @@
       },
       {
         "id": "QJv7kMqqSg1",
-        "title": "Search and Browse Video 1",
+        "title": "Video 1",
+        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+      },
+      {
+        "id": "QJv7kMqqSg1",
+        "title": "Video 1",
         "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
       }
     ]
