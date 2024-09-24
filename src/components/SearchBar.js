@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Custom styles
 
-const SUGGEST_URL_DOCUMENTS = 'http://localhost:8080/docs-search/query_suggestion?query='; //TODO: Remove localhost for deployment; used only for local testing
+const SUGGEST_URL_DOCUMENTS = '/docs-search/query_suggestion?query=';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');

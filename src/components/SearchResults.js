@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import HelpMenu from './HelpMenu';
 import './SearchResults.css'; // Custom styles
 
-const SEARCH_URL = 'http://localhost:8080/docs-search/search'; //TODO: Remove localhost for deployment; used only for local testing
+const SEARCH_URL = '/docs-search/search';
 const RESULTS_PER_PAGE = 25;
 
 const SearchResults = ( {basename} ) => {
