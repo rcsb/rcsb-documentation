@@ -6,7 +6,7 @@ import VideoLandingPage from './components/VideoLandingPage';
 const routes = [
   { path: '/', element: <HomePage basename={window.__DOCUMENTATION_BASEROUTE__ || ''} /> },
   { path: '/:query', element: <SearchResults basename={window.__DOCUMENTATION_BASEROUTE__ || ''}/> },
-  { path: '/videos', element: <VideoLandingPage /> }, 
+  { path: '/videos', element: <VideoLandingPage basename={window.__DOCUMENTATION_BASEROUTE__ || ''}/> }, 
 ];
 
 export default routes;
