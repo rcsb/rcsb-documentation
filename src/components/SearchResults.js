@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
 import HelpMenu from './HelpMenu';
-import './SearchResults.css'; // Custom styles
+import './SearchResults.css';
 
 const SEARCH_URL = '/docs-search/search';
 const RESULTS_PER_PAGE = 25;
@@ -79,6 +79,7 @@ const SearchResults = ( {basename} ) => {
 
     useEffect(() => {
         const fetchResults = async () => {
+            setLoading(true); 
             try {
                 const requestBody = {
                     query: encodeURIComponent(query),

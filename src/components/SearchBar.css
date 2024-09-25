@@ -1,16 +1,16 @@
-.search-bar-container {
+.doc-search-bar-container {
   position: relative;
   width: 100%;
   max-width: 600px;
   margin-left: 0;
 }
 
-.search-bar {
+.doc-search-bar {
   display: flex;
   align-items: center;
 }
 
-.search-bar .form-control {
+.doc-search-bar .form-control {
   flex: 1;
   height: 45px;
   font-size: 16px;
@@ -19,7 +19,7 @@
 
 }
 
-.search-bar .search-button {
+.doc-search-bar .doc-search-button {
   height: 45px;
   background-color: #325880;
   color: #fff;
@@ -34,14 +34,14 @@
   
 }
 
-.search-bar-container .tooltip-icon {
+.doc-search-bar-container .tooltip-icon {
   margin-left: 5px;
   cursor: pointer;
   position: relative;
   color: #325880;
 }
 
-.search-bar-container .tooltip-icon::after {
+.doc-search-bar-container .tooltip-icon::after {
   content: attr(data-tooltip);
   position: absolute;
   bottom: 10%;
@@ -58,12 +58,12 @@
   z-index: 1000;
 }
 
-.search-bar-container .tooltip-icon:hover::after {
+.doc-search-bar-container .tooltip-icon:hover::after {
   opacity: 1;
   visibility: visible;
 }
 
-.search-bar-container .dropdown-menu {
+.doc-search-bar-container .dropdown-menu {
   width: 60%;
   display: block;
   position: absolute;
@@ -71,13 +71,13 @@
 }
 
 @media (max-width: 768px) {
-  .search-bar-container {
+  .doc-search-bar-container {
     padding: 0 15px;
   }
 }
 
 @media (max-width: 480px) {
-  .search-bar-container {
+  .doc-search-bar-container {
     max-width: 100%;
   }
   .tooltip-icon {

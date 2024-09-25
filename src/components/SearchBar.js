@@ -43,6 +43,7 @@ const SearchBar = () => {
     };
 
     const handleSearch = useCallback((query) => {
+        setMenuOpen(false);
         navigate(`/${encodeURIComponent(query)}`);
     }, [navigate]);
 
@@ -56,7 +57,11 @@ const SearchBar = () => {
         } else if (e.key === 'ArrowUp') {
             setMenuIndex((prevIndex) => (prevIndex - 1 + menuItems.length) % menuItems.length);
         } else if (e.key === 'Enter') {
-            handleMenuSelect(menuItems[menuIndex]);
+            if (menuIndex >= 0 && menuItems.length > 0) {
+                handleMenuSelect(menuItems[menuIndex]);
+            } else {
+                handleSearch(value);
+            }
         }
     };
 
@@ -67,8 +72,8 @@ const SearchBar = () => {
     };
     
     return (
-        <div className="search-bar-container">
-            <div className="search-bar">
+        <div className="doc-search-bar-container">
+            <div className="doc-search-bar">
                 <input type="text"
                     className="form-control"
                     onClick={handleInputClick}
@@ -79,7 +84,7 @@ const SearchBar = () => {
                     spellCheck="false"
                     autoFocus
                     value={value} />
-                <button className="search-button" onClick={handleButtonClick}>
+                <button className="doc-search-button" onClick={handleButtonClick}>
                     Search
                 </button>
                 <span className="tooltip-icon" data-tooltip="Search for help resources, PDB-101 learning resources, and archived news items">
