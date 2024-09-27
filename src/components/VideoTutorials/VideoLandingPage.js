@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
 import Slider from 'react-slick';
-import videoPanels from '../videoData.json';
+import videoPanels from './videoData.json';
 import './VideoLandingPage.css';
-import HelpMenu from './HelpMenu';
+import HelpMenu from '../HelpMenu';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
+// Custom arrow components
+const CustomPrevArrow = ({ onClick, currentSlide }) => {
+  if (currentSlide === 0) return null; // Hide the left arrow if on the first slide
+  return (
+    <button className="slick-prev" onClick={onClick}>
+      &#8592;
+    </button>
+  );
+};
+
+const CustomNextArrow = ({ onClick, currentSlide, slideCount }) => {
+  if (currentSlide === slideCount - 1) return null; // Hide the right arrow if on the last slide
+  return (
+    <button className="slick-next" onClick={onClick}>
+      &#8594;
+    </button>
+  );
+};
+
 const VideoLandingPage = ({ basename }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [arrowVisibility, setArrowVisibility] = useState({
-    showLeft: false,
-    showRight: true,
-  });
+  const [currentSlide, setCurrentSlide] = useState(0); // Track the current slide
 
   const handleCloseVideo = () => setSelectedVideo(null);
 
@@ -19,19 +35,13 @@ const VideoLandingPage = ({ basename }) => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: Math.min(4, numVideos), // Adjust to show fewer slides based on the number of videos
+    slidesToShow: Math.min(4, numVideos), 
     slidesToScroll: 1,
-    arrows: numVideos > 4, 
-    variableWidth: true, 
+    arrows: numVideos > 4,
+    prevArrow: <CustomPrevArrow currentSlide={currentSlide} />, 
+    nextArrow: <CustomNextArrow currentSlide={currentSlide} slideCount={numVideos} />,
     beforeChange: (current, next) => {
-      const totalSlides = numVideos - 1;
-      if (next === 0) {
-        setArrowVisibility({ showLeft: false, showRight: true });
-      } else if (next === totalSlides) {
-        setArrowVisibility({ showLeft: true, showRight: false });
-      } else {
-        setArrowVisibility({ showLeft: true, showRight: true });
-      }
+      setCurrentSlide(next); // Update current slide for arrow logic
     },
     responsive: [
       {
@@ -60,7 +70,6 @@ const VideoLandingPage = ({ basename }) => {
       }
     ]
   });
-  
 
   return (
     <div className="container my-4 video-landing-page">

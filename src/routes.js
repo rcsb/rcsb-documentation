@@ -1,7 +1,7 @@
 import React from 'react'; 
 import HomePage from './components/HomePage';
 import SearchResults from './components/SearchResults';
-import VideoLandingPage from './components/VideoLandingPage';
+import VideoLandingPage from './components/VideoTutorials/VideoLandingPage';
 
 const basename = window.__DOCUMENTATION_BASEROUTE__ || '';
 
