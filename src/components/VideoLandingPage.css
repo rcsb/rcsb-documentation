@@ -26,9 +26,18 @@
   background-color: rgba(0, 0, 0, 0.7) !important;
 }
 
-.slick-slide > div {
-  margin: 0 10px 0 0; 
+.slick-slide {
+  /* display: inline-block !important; */
+  width: 240px !important;
 }
+
+.slick-slide > div {
+  margin-right: 10px;
+}
+
+/* .slick-track {
+  text-align: left !important; 
+} */
 
 .slick-dots {
   padding-bottom: 15px !important;

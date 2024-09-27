@@ -19,9 +19,10 @@ const VideoLandingPage = ({ basename }) => {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: Math.min(4, numVideos), // Adjust to show fewer slides based on the number of videos
     slidesToScroll: 1,
-    arrows: numVideos > 4, // Show arrows only if there are more than 4 videos
+    arrows: numVideos > 4, 
+    variableWidth: true, 
     beforeChange: (current, next) => {
       const totalSlides = numVideos - 1;
       if (next === 0) {
@@ -36,17 +37,17 @@ const VideoLandingPage = ({ basename }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: Math.min(3, numVideos), // Adjust slidesToShow based on the number of videos
+          slidesToShow: Math.min(3, numVideos),
           slidesToScroll: 1,
-          arrows: numVideos > 3, // Show arrows only if there are more than 3 videos
+          variableWidth: true,
         }
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: Math.min(2, numVideos), // Adjust slidesToShow for smaller screen
+          slidesToShow: Math.min(2, numVideos),
           slidesToScroll: 1,
-          arrows: numVideos > 2, // Show arrows only if there are more than 2 videos
+          variableWidth: true,
         }
       },
       {
@@ -54,7 +55,7 @@ const VideoLandingPage = ({ basename }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          arrows: numVideos > 1, // Show arrows only if there's more than 1 video
+          variableWidth: true,
         }
       }
     ]
