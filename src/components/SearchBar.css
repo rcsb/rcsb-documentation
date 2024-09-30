@@ -1,8 +1,16 @@
 .doc-search-bar-container {
   position: relative;
   width: 100%;
-  max-width: 600px;
-  margin-left: 0;
+  max-width: 850px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.doc-search-bar-background {
+  background-color: #f7f7f7;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .doc-search-bar {
@@ -16,7 +24,6 @@
   font-size: 16px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-
 }
 
 .doc-search-bar .doc-search-button {
@@ -29,9 +36,8 @@
   justify-content: center;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  padding: 0 20px; /* Added padding for better appearance */
+  padding: 0 20px;
   font-size: 16px;
-  
 }
 
 .doc-search-bar-container .tooltip-icon {

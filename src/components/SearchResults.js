@@ -192,8 +192,10 @@ const SearchResults = ( {basename} ) => {
             </div>
             
             <div className="row">
-                <div className="col-lg-8 col-md-8 col-sm-12">
-                    <SearchBar />
+                <div className="col-lg-12">
+                    <div className="doc-search-bar-background">
+                        <SearchBar />
+                    </div>
                 </div>
             </div>
             <div className="row">
