@@ -73,7 +73,7 @@ const VideoLandingPage = ({ basename }) => {
   }, [location]);
 
   return (
-    <div className="container my-4 video-landing-page">
+    <div className="container my-4 video-landing-page" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
       {/* Title and HelpMenu Section */}
       <div className="row mb-4 align-items-center video-tutorials-header">
         <div className="col-lg-9 col-md-9 col-sm-12">
