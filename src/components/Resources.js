@@ -26,7 +26,7 @@ const Resources = ({ data }) => {
               </ul>
             </div>
             <div className="panel-footer">
-              <a href="#">Related FAQs</a>
+              <a href={data[category].faqlink}>Related FAQs</a>
             </div>
           </div>
         </div>

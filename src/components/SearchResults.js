@@ -181,7 +181,7 @@ const SearchResults = ( {basename} ) => {
     }
 
     return (
-        <div className="container search-results">
+        <div className="container search-results" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
             <div className="row">
                 <div className="col-md-9">
                     <h1>Search Results for "{query}"</h1>

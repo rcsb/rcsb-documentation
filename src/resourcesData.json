@@ -1,6 +1,7 @@
 {
   "Structural Biology Data": {
     "description": "Data available on RCSB PDB website",
+    "faqlink" : "/docs/general-help/website-faq#faqs-about-structural-biology-data",
     "subheadings": [
       { "title": "3D Structures in the Protein Data Bank", "link": "/docs/general-help/organization-of-3d-structures-in-the-protein-data-bank", "description": "Data hierarchy within 3D macromolecules" },
       { "title": "Assessing Macromolecule Quality", "link": "/docs/general-help/assessing-the-quality-of-3d-structures", "description": "Agreement with experimental data and stereochemistry" },
@@ -11,6 +12,7 @@
   },
   "Search Tools": {
     "description": "Research-focused search tools",
+    "faqlink" : "/docs/general-help/website-faq#faqs-about-search-tools",
     "subheadings": [
       { "title": "Sequence Similarity", "link": "/docs/search-and-browse/advanced-search/sequence-similarity-search", "description": "Similar protein, RNA or DNA sequences" },
       { "title": "Structure Similarity", "link": "/docs/search-and-browse/advanced-search/structure-similarity-search", "description": "Chains or assemblies with similar 3D shape" },
@@ -21,6 +23,7 @@
   },
   "Advanced Searching": {
     "description": "Combine multiple search criteria",
+    "faqlink" : "docs/general-help/website-faq#faqs-about-advanced-searching",
     "subheadings": [
       { "title": "Advanced Searching", "link": "/docs/search-and-browse/advanced-search/overview-advanced-search", "description": "Use AND, OR, NOT logic for complex queries" },
       { "title": "Search By Attributes", "link": "/docs/search-and-browse/advanced-search/attribute-search", "description": "E.g., release date, resolution, taxonomy" },
@@ -31,6 +34,7 @@
   },
   "Visualize": {
     "description": "Interactive 3D structure visualization",
+    "faqlink" : "/docs/general-help/website-faq#faqs-about-visualize",
     "subheadings": [
       { "title": "Biomolecule in 3D", "link": "/docs/3d-viewers/mol*/getting-started", "description": "View 3D structures in atomic detail" },
       { "title": "Ligand Interaction in 3D", "link": "/docs/3d-viewers/mol*/faqs-scenarios#how-to-display-the-interactions-of-a-ligand-with-amino-acids-and-ligands-bound-nearby--from-the-structure-summary-page", "description": "Small molecule-biomolecule interactions" },
@@ -41,6 +45,7 @@
   },
   "Explore": {
     "description": "Detailed biostructure information",
+    "faqlink" : "/docs/general-help/website-faq#faqs-about-explore",
     "subheadings": [
       { "title": "Structure Summary Pages", "link": "/docs/exploring-a-3d-structure/overview", "description": "Provide key detils for individual 3D structures" },
       { "title": "Ligands of Interest (LOIs)", "link": "/docs/exploring-a-3d-structure/ligands", "description": "Small molecules identified as a focus of research" },
@@ -51,6 +56,7 @@
   },
   "Programmatic Access": {
     "description": "Data download options and APIs",
+    "faqlink" : "/docs/general-help/website-faq#faqs-about-programmatic-access",
     "subheadings": [
       { "title": "RCSB PDB API Services", "link": "/docs/programmatic-access/web-services-overview", "description": "Programmatic search and data retrieval" },
       { "title": "RCSB PDB API Rate Limits", "link": "/docs/programmatic-access/web-services-overview#api-rate-limits", "description": "API rate-limiting restrictions" },
