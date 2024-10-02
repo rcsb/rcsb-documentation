@@ -71,8 +71,8 @@
 /* Enhanced arrow styles */
 .custom-prev, .custom-next {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 25%;
+  transform: translateY(-10%);
   background-color: rgba(0, 0, 0, 0.7); /* Dark background for a modern look */
   color: white;
   border: none;
@@ -98,7 +98,7 @@
 }
 
 .custom-prev:hover, .custom-next:hover {
-  background-color: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+  background-color: rgba(0, 0, 0, 0.781); /* Darker background on hover */
   transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
