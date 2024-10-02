@@ -1,95 +1,90 @@
 [
-  {
-    "topic": "search-and-browse",
-    "title": "Search and Browse",
-    "videos": [
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 1",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 2",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 3",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 4",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSg1",
-        "title": "Video 5",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSg1",
-        "title": "Video 6",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSg1",
-        "title": "Video 7",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSg1",
-        "title": "Video 8",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      }
+    {
+        "topic": "structural-biology-data",
+        "title": "Structural Biology Data",
+        "videos": [
+            {
+            "id": "jSk0KgcQWl8",
+            "title": "Entry, Entity, Assembly, and Instance",
+            "image": "https://img.youtube.com/vi/jSk0KgcQWl8/0.jpg"
+            }
+        ]
+    },
+    {
+        "topic": "molecular-visualization",
+        "title": "Molecular Visualization using Mol*",
+        "videos": [
+        {
+            "id": "ptYUuephclA",
+            "title": "Mol* Basics",
+            "image": "https://img.youtube.com/vi/ptYUuephclA/0.jpg"
+        },
+        {
+            "id": "EdgmALgbJpM",
+            "title": "Introduction to Visualization with Mol*",
+            "image": "https://img.youtube.com/vi/EdgmALgbJpM/0.jpg"
+        },
+        {
+            "id": "LQr-6h0nu0o",
+            "title": "Creating Animations with Mol*",
+            "image": "https://img.youtube.com/vi/LQr-6h0nu0o/0.jpg"
+        },
+        {
+            "id": "q-Qy8r0GiLc",
+            "title": "Molstar superposing two structures",
+            "image": "https://img.youtube.com/vi/q-Qy8r0GiLc/0.jpg"
+        },
+        {
+            "id": "13nHI3pyWkM",
+            "title": "Multiple Views in a Mol* Session ",
+            "image": "https://img.youtube.com/vi/13nHI3pyWkM/0.jpg"
+        },
+        {
+            "id": "QJv7kMqqSg1",
+            "title": "Video 6",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        },
+        {
+            "id": "QJv7kMqqSg1",
+            "title": "Video 7",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        },
+        {
+            "id": "QJv7kMqqSg1",
+            "title": "Video 8",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        }
+        ]
+    },
+    {
+        "topic": "analyze-3d-structural-data",
+        "title": "Analyze 3D Structural Data",
+        "videos": [
+        {
+            "id": "QJv7kMqqSgo",
+            "title": "Analyze 3D Structural Data Video 1",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        },
+        {
+            "id": "QJv7kMqqSgo",
+            "title": "Analyze 3D Structural Data Video 2",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        }, {
+            "id": "QJv7kMqqSgo",
+            "title": "Analyze 3D Structural Data Video 3",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        }
+        ]
+    },
+    {
+        "topic": "apis",
+        "title": "APIs",
+        "videos": [
+        {
+            "id": "QJv7kMqqSgo",
+            "title": "APIs Video 1",
+            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
+        }
+        ]
+    }
     ]
-  },
-  {
-    "topic": "visualize-3d-structures",
-    "title": "Visualize 3D Structures",
-    "videos": [
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 1",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 1",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      }
-    ]
-  },
-  {
-    "topic": "analyze-3d-structural-data",
-    "title": "Analyze 3D Structural Data",
-    "videos": [
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "Analyze 3D Structural Data Video 1",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      },
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "Analyze 3D Structural Data Video 2",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      }, {
-        "id": "QJv7kMqqSgo",
-        "title": "Analyze 3D Structural Data Video 3",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      }
-    ]
-  },
-  {
-    "topic": "apis",
-    "title": "APIs",
-    "videos": [
-      {
-        "id": "QJv7kMqqSgo",
-        "title": "APIs Video 1",
-        "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-      }
-    ]
-  }
-]

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import Slider from 'react-slick';
 import videoPanels from './videoData.json';
 import './VideoLandingPage.css';
@@ -28,6 +29,7 @@ const CustomNextArrow = ({ onClick, currentSlide, slideCount }) => {
 const VideoLandingPage = ({ basename }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0); // Track the current slide
+  const location = useLocation();
 
   const handleCloseVideo = () => setSelectedVideo(null);
 
@@ -70,6 +72,16 @@ const VideoLandingPage = ({ basename }) => {
       }
     ]
   });
+
+  useEffect(() => {
+    if (location.hash) {
+      const element = document.getElementById(location.hash.substring(1));
+      if (element) {
+        // Scroll the element into view smoothly
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
 
   return (
     <div className="container my-4 video-landing-page">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './ResourcesAndVideos.css' 
+import videoData from './VideoTutorials/videoData.json';
 
 const ResourcesAndVideos = () => {
   return (
@@ -68,11 +69,13 @@ const ResourcesAndVideos = () => {
             </div>
           </div>
         </div>
+        {/* TODO should come dynemically from videoData.json */}
         <div className="panel-body">
-          <p><Link to="/videos#search-and-browse">Search and Browse</Link></p>
-          <p><Link to="/videos#visualize-3d-structures">Visualize 3D Structures</Link></p>
-          <p><Link to="/videos#analyze-3d-structural-data">Analyze 3D Structural Data</Link></p>
-          <p><Link to="/videos#apis">APIs</Link></p>
+          {videoData.map(section => (
+            <p key={section.topic}>
+                <Link to={`/videos#${section.topic}`}>{section.title}</Link>
+            </p>
+          ))}
         </div>
       </div>
     </div>
