@@ -94,7 +94,7 @@ const VideoLandingPage = ({ basename }) => {
         return (
           <div key={panelIndex} className="video-section mb-4" id={panel.topic}>
             <div className="row mb-3 align-items-center video-panel-header">
-              <div className="col-md-8">
+              <div className="col-sm-12">
                 <h3 className="video-section-title">{panel.title}</h3>
               </div>
             </div>
