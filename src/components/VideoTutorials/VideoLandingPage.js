@@ -6,13 +6,11 @@ import HelpMenu from '../HelpMenu';
 
 const CustomPrevArrow = ({ onClick }) => (
   <button className="custom-prev" onClick={onClick}>
-    &#8592;
   </button>
 );
 
 const CustomNextArrow = ({ onClick }) => (
   <button className="custom-next" onClick={onClick}>
-    &#8594;
   </button>
 );
 

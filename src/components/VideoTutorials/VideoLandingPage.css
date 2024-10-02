@@ -68,37 +68,60 @@
   text-overflow: ellipsis;
 }
 
+/* Enhanced arrow styles */
 .custom-prev, .custom-next {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background for a modern look */
   color: white;
   border: none;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
+  border-radius: 50%; /* Round shape */
+  font-size: 24px; /* Increase size for visibility */
+  width: 50px;
+  height: 50px;
   z-index: 2;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
 }
 
 .custom-prev {
-  left: 0;
+  left: 10px; /* Keep some padding from the left */
 }
 
 .custom-next {
-  right: 0;
+  right: 10px; /* Keep some padding from the right */
 }
 
 .custom-prev:hover, .custom-next:hover {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9); /* Darker background on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
+/* Add Bootstrap Glyphicon for arrow icons */
+.custom-prev::before, .custom-next::before {
+  font-family: 'Glyphicons Halflings';
+}
+
+.custom-prev::before {
+  content: "\e079"; /* Bootstrap glyphicon-chevron-left */
+}
+
+.custom-next::before {
+  content: "\e080"; /* Bootstrap glyphicon-chevron-right */
+}
+
+/* Video divider */
 .video-divider {
   margin: 10px 0 0 0;
   border-top: 1px solid #ddd;
 }
 
+/* Overlay video player styling */
 .video-overlay {
   position: fixed;
   top: 0;
