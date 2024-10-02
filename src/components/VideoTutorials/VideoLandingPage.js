@@ -1,83 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import Slider from 'react-slick';
 import videoPanels from './videoData.json';
 import './VideoLandingPage.css';
 import HelpMenu from '../HelpMenu';
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
 
-// Custom arrow components
-const CustomPrevArrow = ({ onClick, currentSlide }) => {
-  if (currentSlide === 0) return null; // Hide the left arrow if on the first slide
-  return (
-    <button className="slick-prev" onClick={onClick}>
-      &#8592;
-    </button>
-  );
-};
+const CustomPrevArrow = ({ onClick }) => (
+  <button className="custom-prev" onClick={onClick}>
+    &#8592;
+  </button>
+);
 
-const CustomNextArrow = ({ onClick, currentSlide, slideCount }) => {
-  if (currentSlide === slideCount - 1) return null; // Hide the right arrow if on the last slide
-  return (
-    <button className="slick-next" onClick={onClick}>
-      &#8594;
-    </button>
-  );
-};
+const CustomNextArrow = ({ onClick }) => (
+  <button className="custom-next" onClick={onClick}>
+    &#8594;
+  </button>
+);
 
 const VideoLandingPage = ({ basename }) => {
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState(0); // Track the current slide
+  const [visibleVideos, setVisibleVideos] = useState({}); // To store visible videos count dynamically based on screen size
+  const [scrollPositions, setScrollPositions] = useState({}); // Track scroll position for each panel
   const location = useLocation();
 
   const handleCloseVideo = () => setSelectedVideo(null);
 
-  const getSliderSettings = (numVideos) => ({
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: Math.min(4, numVideos), 
-    slidesToScroll: 1,
-    arrows: numVideos > 4,
-    prevArrow: <CustomPrevArrow currentSlide={currentSlide} />, 
-    nextArrow: <CustomNextArrow currentSlide={currentSlide} slideCount={numVideos} />,
-    beforeChange: (current, next) => {
-      setCurrentSlide(next); // Update current slide for arrow logic
-    },
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: Math.min(3, numVideos),
-          slidesToScroll: 1,
-          variableWidth: true,
-        }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: Math.min(2, numVideos),
-          slidesToScroll: 1,
-          variableWidth: true,
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          variableWidth: true,
-        }
-      }
-    ]
-  });
+  // Handle manual scrolling for video panels
+  const handleScroll = (panelId, direction) => {
+    const container = document.getElementById(panelId);
+    const scrollAmount = container.offsetWidth;
+    const newScrollPosition = direction === 'next'
+      ? container.scrollLeft + scrollAmount
+      : container.scrollLeft - scrollAmount;
 
+    container.scrollLeft = newScrollPosition;
+
+    // Update scroll position state
+    setScrollPositions((prev) => ({
+      ...prev,
+      [panelId]: newScrollPosition,
+    }));
+  };
+
+  // Calculate the number of visible videos based on screen size
+  useEffect(() => {
+    const calculateVisibleVideos = () => {
+      const visible = {};
+      const scrollPos = {};
+      const videoWidth = 240; // Assuming each video takes up 240px width
+      videoPanels.forEach((_, index) => {
+        const container = document.getElementById(`panel-${index}`);
+        if (container) {
+          const containerWidth = container.offsetWidth;
+          visible[`panel-${index}`] = Math.floor(containerWidth / videoWidth); // Calculate how many videos fit in the available width
+          scrollPos[`panel-${index}`] = 0; // Initialize scroll position to 0
+        }
+      });
+      setVisibleVideos(visible);
+      setScrollPositions(scrollPos);
+    };
+
+    calculateVisibleVideos();
+    window.addEventListener('resize', calculateVisibleVideos);
+    return () => window.removeEventListener('resize', calculateVisibleVideos);
+  }, []);
+
+  // Scroll to the specific section if a hash is present in the URL
   useEffect(() => {
     if (location.hash) {
       const element = document.getElementById(location.hash.substring(1));
       if (element) {
-        // Scroll the element into view smoothly
         element.scrollIntoView({ behavior: 'smooth' });
       }
     }
@@ -96,30 +87,54 @@ const VideoLandingPage = ({ basename }) => {
       </div>
 
       {/* Video Panels Section */}
-      {videoPanels.map((panel, panelIndex) => (
-        <div key={panelIndex} className="video-section mb-4" id={panel.topic}>
-          <div className="row mb-3 align-items-center video-panel-header">
-            <div className="col-md-8">
-              <h3 className="video-section-title">{panel.title}</h3>
-            </div>
-          </div>
+      {videoPanels.map((panel, panelIndex) => {
+        const panelId = `panel-${panelIndex}`;
+        const videosVisible = visibleVideos[panelId] || 0;
+        const showArrows = panel.videos.length > videosVisible; // Show arrows if there are more videos than visible ones
+        const isScrolled = scrollPositions[panelId] > 0; // Check if the user has scrolled
 
-          <Slider {...getSliderSettings(panel.videos.length)}>
-            {panel.videos.map((video, videoIndex) => (
-              <div key={videoIndex} className="video-item">
-                <div className="video-thumbnail-container" onClick={() => setSelectedVideo(video)}>
-                  <img src={video.image} alt={video.title} className="video-thumbnail img-responsive" />
-                </div>
-                <div className="video-metadata">
-                  <p className="video-title">{video.title}</p>
-                </div>
+        return (
+          <div key={panelIndex} className="video-section mb-4" id={panel.topic}>
+            <div className="row mb-3 align-items-center video-panel-header">
+              <div className="col-md-8">
+                <h3 className="video-section-title">{panel.title}</h3>
               </div>
-            ))}
-          </Slider>
+            </div>
 
-          {panelIndex < videoPanels.length - 1 && <hr className="video-divider" />}
-        </div>
-      ))}
+            <div className="video-panel-container">
+              {showArrows && isScrolled && (
+                <CustomPrevArrow onClick={() => handleScroll(panelId, 'prev')} />
+              )}
+
+              <div className="video-panel row" id={panelId}>
+                {panel.videos.map((video, videoIndex) => (
+                  <div key={videoIndex} className="col-xs-12 col-sm-6 col-md-3 video-item">
+                    <div
+                      className="video-thumbnail-container"
+                      onClick={() => setSelectedVideo(video)}
+                    >
+                      <img
+                        src={video.image}
+                        alt={video.title}
+                        className="video-thumbnail img-responsive"
+                      />
+                    </div>
+                    <div className="video-metadata">
+                      <p className="video-title">{video.title}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {showArrows && (
+                <CustomNextArrow onClick={() => handleScroll(panelId, 'next')} />
+              )}
+            </div>
+
+            {panelIndex < videoPanels.length - 1 && <hr className="video-divider" />}
+          </div>
+        );
+      })}
 
       {selectedVideo && (
         <div className="video-overlay" onClick={handleCloseVideo}>
