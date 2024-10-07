@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Custom styles
 
-const SUGGEST_URL_DOCUMENTS = '/docs-api/query_suggestion?query=';
+const SUGGEST_URL_DOCUMENTS = 'http://localhost:8080/docs-api/query_suggestion?query=';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
@@ -79,7 +79,7 @@ const SearchBar = () => {
                     onClick={handleInputClick}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
-                    placeholder="e.g. Structure Motif, Hemoglobin, Webinar"
+                    placeholder="Search for help e.g. Structure Motif, Hemoglobin, Webinar"
                     autoComplete="off"
                     spellCheck="false"
                     autoFocus

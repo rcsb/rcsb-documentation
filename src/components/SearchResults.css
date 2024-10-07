@@ -58,6 +58,7 @@
     border-radius: 4px;
     border-left: 3px solid transparent;
     transition: background-color 0.3s ease, border-left-color 0.3s ease;
+    cursor: pointer; 
 }
 
 .nav-pills > li > a:hover {
@@ -102,6 +103,7 @@
 
 .pagination .page-item .page-link {
     color: #337ab7;
+    cursor: pointer;
 }
 
 .pagination .page-item.active .page-link {
@@ -112,6 +114,7 @@
 
 .pagination .page-item.disabled .page-link {
     color: #ddd;
+    cursor: not-allowed;
 }
 
 /* Search results container takes up 2/3 of the width */

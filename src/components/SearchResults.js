@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import HelpMenu from './HelpMenu';
 import './SearchResults.css';
 
-const SEARCH_URL = '/docs-api/search';
+const SEARCH_URL = 'http://localhost:8080/docs-api/search';
 const RESULTS_PER_PAGE = 25;
 
 const SearchResults = ( {basename} ) => {
@@ -159,7 +159,8 @@ const SearchResults = ( {basename} ) => {
                 </div>
                 <nav aria-label="Page navigation">
                     <ul className="pagination">
-                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <li 
+                            className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                             <a className="page-link" onClick={() => handlePageChange(currentPage - 1)} aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>

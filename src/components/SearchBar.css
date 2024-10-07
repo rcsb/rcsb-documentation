@@ -22,6 +22,7 @@
   flex: 1;
   height: 45px;
   font-size: 16px;
+  font-style: italic;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
