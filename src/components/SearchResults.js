@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import HelpMenu from './HelpMenu';
 import './SearchResults.css';
 
-const SEARCH_URL = '/docs-search/search';
+const SEARCH_URL = '/docs-api/search';
 const RESULTS_PER_PAGE = 25;
 
 const SearchResults = ( {basename} ) => {
