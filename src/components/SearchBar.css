@@ -22,9 +22,12 @@
   flex: 1;
   height: 45px;
   font-size: 16px;
-  font-style: italic;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
+}
+
+.doc-search-bar .form-control::placeholder {
+  font-style: italic;
 }
 
 .doc-search-bar .doc-search-button {
