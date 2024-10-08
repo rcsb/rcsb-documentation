@@ -82,7 +82,7 @@ const SearchResults = ( {basename} ) => {
             setLoading(true); 
             try {
                 const requestBody = {
-                    query: encodeURIComponent(query),
+                    query: query.includes('"') ? query : encodeURIComponent(query),
                     page: {
                         size: 100, // Fetch 100 results
                         current: 1
