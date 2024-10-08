@@ -91,15 +91,15 @@ const SearchBar = () => {
                     <i className="glyphicon glyphicon-info-sign"></i>
                 </span>
             </div>
-            {menuOpen && (
-                <ul className="dropdown-menu">
-                    {menuItems.map((item, i) => (
-                        <li key={item} className={i === menuIndex ? 'active' : ''}>
-                            <a href="" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
-                        </li>
-                    ))}
-                </ul>
-            )}
+            {menuOpen && menuItems.length > 0 && (
+            <ul className="dropdown-menu">
+                {menuItems.map((item, i) => (
+                    <li key={item} className={i === menuIndex ? 'active' : ''}>
+                        <a href="" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
+                    </li>
+                ))}
+            </ul>
+        )}
         </div>
     );
 };
