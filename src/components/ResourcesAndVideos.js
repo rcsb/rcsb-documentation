@@ -65,7 +65,9 @@ const ResourcesAndVideos = () => {
               <h3 className="panel-title">Video Tutorials</h3>
             </div>
             <div className="col-md-4 col-sm-2 col-xs-2 text-right">
+            <a href="https://www.youtube.com/user/RCSBProteinDataBank" target="_blank" rel="noopener noreferrer">
               <i className="fa fa-video-camera fa-lg" style={{ color: '#325880' }} aria-hidden="true"></i>
+            </a>
             </div>
           </div>
         </div>
