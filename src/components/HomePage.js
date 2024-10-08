@@ -8,7 +8,7 @@ import data from '../resourcesData.json';
 
 const HomePage = ( {basename} ) => {
   return (
-    <div className="container my-4" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
+    <div className="container my-4" style={{ paddingLeft: '0px', paddingRight: '0px', marginTop: '-25px' }}>
       <div className="row">
         <div className="col-lg-9 col-md-9 col-sm-12">
           <h1 className="text-left mb-3">RCSB PDB Help</h1>
