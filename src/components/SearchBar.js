@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Custom styles
 
@@ -10,6 +10,7 @@ const SearchBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [menuIndex, setMenuIndex] = useState(-1);
     const navigate = useNavigate();
+    const searchBarRef = useRef(null);
 
     const fetchSuggestions = useCallback(async (query) => {
         try {
@@ -70,9 +71,21 @@ const SearchBar = () => {
             handleSearch(value);
         }
     };
-    
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+                setMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="doc-search-bar-container">
+        <div className="doc-search-bar-container" ref={searchBarRef}>
             <div className="doc-search-bar">
                 <input type="text"
                     className="form-control"
@@ -92,14 +105,14 @@ const SearchBar = () => {
                 </span>
             </div>
             {menuOpen && menuItems.length > 0 && (
-            <ul className="dropdown-menu">
-                {menuItems.map((item, i) => (
-                    <li key={item} className={i === menuIndex ? 'active' : ''}>
-                        <a href="" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
-                    </li>
-                ))}
-            </ul>
-        )}
+                <ul className="dropdown-menu">
+                    {menuItems.map((item, i) => (
+                        <li key={item} className={i === menuIndex ? 'active' : ''}>
+                            <a href="" onClick={() => handleMenuSelect(item)} dangerouslySetInnerHTML={{ __html: item }} />
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };
