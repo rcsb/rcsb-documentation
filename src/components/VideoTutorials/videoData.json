@@ -38,52 +38,6 @@
             "id": "13nHI3pyWkM",
             "title": "Multiple Views in a Mol* Session ",
             "image": "https://img.youtube.com/vi/13nHI3pyWkM/0.jpg"
-        },
-        {
-            "id": "QJv7kMqqSg1",
-            "title": "Video 6",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        },
-        {
-            "id": "QJv7kMqqSg1",
-            "title": "Video 7",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        },
-        {
-            "id": "QJv7kMqqSg1",
-            "title": "Video 8",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        }
-        ]
-    },
-    {
-        "topic": "analyze-3d-structural-data",
-        "title": "Analyze 3D Structural Data",
-        "videos": [
-        {
-            "id": "QJv7kMqqSgo",
-            "title": "Analyze 3D Structural Data Video 1",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        },
-        {
-            "id": "QJv7kMqqSgo",
-            "title": "Analyze 3D Structural Data Video 2",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        }, {
-            "id": "QJv7kMqqSgo",
-            "title": "Analyze 3D Structural Data Video 3",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
-        }
-        ]
-    },
-    {
-        "topic": "apis",
-        "title": "APIs",
-        "videos": [
-        {
-            "id": "QJv7kMqqSgo",
-            "title": "APIs Video 1",
-            "image": "https://img.youtube.com/vi/QJv7kMqqSgo/0.jpg"
         }
         ]
     }
