@@ -7,7 +7,7 @@
       { "title": "Assessing Macromolecule Quality", "link": "/docs/general-help/assessing-the-quality-of-3d-structures", "description": "Agreement with experimental data and stereochemistry" },
       { "title": "Assessing Ligand Quality", "link": "/docs/general-help/ligand-structure-quality-in-pdb-structures", "description": "Agreement with experimental data and chemical parameters" },
       { "title": "Computed Structure Models", "link": "/docs/general-help/computed-structure-models-and-rcsborg", "description": "Protein structure predictions available on RCSB.org" },
-      { "title": "Integrated External Resources", "link": "/docs/general-help/data-from-external-resources-integrated-into-rcsb-pdb", "description": "List of integrated biodata resourses" }
+      { "title": "Integrated External Resources", "link": "/docs/general-help/data-from-external-resources-integrated-into-rcsb-pdb", "description": "List of integrated biodata resources" }
     ]
   },
   "Search Tools": {
@@ -16,7 +16,7 @@
     "subheadings": [
       { "title": "Sequence Similarity", "link": "/docs/search-and-browse/advanced-search/sequence-similarity-search", "description": "Similar protein, RNA or DNA sequences" },
       { "title": "Structure Similarity", "link": "/docs/search-and-browse/advanced-search/structure-similarity-search", "description": "Chains or assemblies with similar 3D shape" },
-      { "title": "Chemical Similarity", "link": "/docs/search-and-browse/advanced-search/chemical-similarity-search", "description": "Small molecules with chemically similar structure" },
+      { "title": "Chemical Similarity", "link": "/docs/search-and-browse/advanced-search/chemical-similarity-search", "description": "Small molecules with chemically similar structures" },
       { "title": "Sequence Motif", "link": "/docs/search-and-browse/advanced-search/sequence-motif-search", "description": "Sequences that share small, conserved regions" },
       { "title": "Structure Motif", "link": "/docs/search-and-browse/advanced-search/structure-motif-search", "description": "Structures that share 3D arrangements of residues" }
     ]
@@ -36,8 +36,8 @@
     "description": "Interactive 3D structure visualization",
     "faqlink" : "/docs/general-help/website-faq#faqs-about-visualize",
     "subheadings": [
-      { "title": "Biomolecule in 3D", "link": "/docs/3d-viewers/mol*/getting-started", "description": "View 3D structures in atomic detail" },
-      { "title": "Ligand Interaction in 3D", "link": "/docs/3d-viewers/mol*/faqs-scenarios#how-to-display-the-interactions-of-a-ligand-with-amino-acids-and-ligands-bound-nearby--from-the-structure-summary-page", "description": "Small molecule-biomolecule interactions" },
+      { "title": "Biomolecules in 3D", "link": "/docs/3d-viewers/mol*/getting-started", "description": "View 3D structures in atomic details" },
+      { "title": "Ligand Interactions in 3D", "link": "/docs/3d-viewers/mol*/faqs-scenarios#how-to-display-the-interactions-of-a-ligand-with-amino-acids-and-ligands-bound-nearby--from-the-structure-summary-page", "description": "Small molecule-biomolecule interactions" },
       { "title": "Sequence Annotations in 3D", "link": "/docs/sequence-viewers/sequence-annotations-in-3d", "description": "Map protein sequence features to 3D structure" },
       { "title": "Sequence Alignments in 3D", "link": "/docs/grouping-structures/explore-sequence-alignments-in-3d", "description": "Precomputed alignments and superimposed structures" },
       { "title": "Structure Alignments", "link": "/docs/tools/pairwise-structure-alignment", "description": "Calculate and visualize accurate structure alignments" }
