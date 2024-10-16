@@ -81,13 +81,32 @@ const SearchResults = ( {basename} ) => {
         const fetchResults = async () => {
             setLoading(true); 
             try {
-                const requestBody = {
-                    query: query.includes('"') ? query : encodeURIComponent(query),
-                    page: {
-                        size: 100, // Fetch 100 results
-                        current: 1
-                    }
-                };
+                // Check if the query contains quotes
+                const isQuoted = query.startsWith('"') && query.endsWith('"');
+                let requestBody;
+
+                if (isQuoted) {
+                    // For quoted queries, search with exact phrase (AND logic)
+                    requestBody = {
+                        query: query,  // Keep the query as is for exact match
+                        page: {
+                            size: 100, // Fetch 100 results
+                            current: 1
+                        }
+                    };
+                } else {
+                    // For unquoted queries, split into words and apply OR logic
+                    const keywords = query.split(/\s+/);  // Split query by spaces into keywords
+                    const orQuery = keywords.map(word => `(${word})`).join(' OR ');  // Join with OR
+                    
+                    requestBody = {
+                        query: orQuery,  // Use OR logic in the query
+                        page: {
+                            size: 100, // Fetch 100 results
+                            current: 1
+                        }
+                    };
+                }
 
                 const response = await fetch(SEARCH_URL, {
                     method: 'POST',
