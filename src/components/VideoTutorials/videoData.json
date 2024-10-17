@@ -4,9 +4,14 @@
         "title": "Structural Biology Data",
         "videos": [
             {
-            "id": "jSk0KgcQWl8",
-            "title": "Entry, Entity, Assembly, and Instance",
-            "image": "https://img.youtube.com/vi/jSk0KgcQWl8/0.jpg"
+                "id": "wvTv8TqWC48",
+                "title": "What is a Protein? (from PDB-101)",
+                "image": "https://img.youtube.com/vi/wvTv8TqWC48/0.jpg"
+                },
+            {
+                "id": "jSk0KgcQWl8",
+                "title": "Entry, Entity, Assembly, and Instance",
+                "image": "https://img.youtube.com/vi/jSk0KgcQWl8/0.jpg"
             }
         ]
     },
