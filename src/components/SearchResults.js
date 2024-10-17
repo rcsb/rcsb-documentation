@@ -12,7 +12,7 @@ const SearchResults = ( {basename} ) => {
     const [results, setResults] = useState([]);
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
     const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState('rcsbPdb');
+    const [activeTab, setActiveTab] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
 
     // Memoized transformData function to avoid re-creating it on every render
@@ -120,16 +120,6 @@ const SearchResults = ( {basename} ) => {
                 setResults(transformedData.results);
                 setNum(transformedData.num);
                 setLoading(false);
-
-                if (transformedData.num.rcsbPdb === 0) {
-                    if (transformedData.num.newsAnnouncements > 0) {
-                        setActiveTab('newsAnnouncements');
-                    } else if (transformedData.num.pdb101 > 0) {
-                        setActiveTab('pdb101');
-                    } else if (transformedData.num.all > 0) {
-                        setActiveTab('all');
-                    }
-                }
             } catch (error) {
                 console.error('Error fetching search results:', error);
                 setLoading(false);
