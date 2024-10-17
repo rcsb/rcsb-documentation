@@ -13,19 +13,17 @@ const HelpMenu = ({ basename }) => {
     <div style={{ marginTop: '-20px' }}>
       <div className="small-menu">
         <p>
+          <i className="fa fa-home" aria-hidden="true"></i>&nbsp;
           <a href={helpTopicsHref}
-          style={{ opacity: isHomePage ? '50%' : '100%', pointerEvents: isHomePage ? 'none' : 'auto' }}
-          >
-            <i className="fa fa-home" aria-hidden="true"></i> Help Topics
-          </a>
+          style={{ opacity: isHomePage ? '50%' : '100%', pointerEvents: isHomePage ? 'none' : 'auto' }}>Help Topics</a>
           <span className="divider">|</span>
-          <a href="/docs/general-help/website-faq">
-            <i className="fa fa-question-circle" aria-hidden="true"></i> FAQs
-          </a>
+          
+          <i className="fa fa-question-circle" aria-hidden="true"></i>&nbsp;
+          <a href="/docs/general-help/website-faq">FAQs</a>
           <span className="divider">|</span>
-          <a href="/docs/general-help/glossary">
-            <i className="fa fa-book" aria-hidden="true"></i> Glossary
-          </a>
+          
+          <i className="fa fa-book" aria-hidden="true"></i>&nbsp;
+          <a href="/docs/general-help/glossary">Glossary</a>
         </p>
       </div>
     </div>

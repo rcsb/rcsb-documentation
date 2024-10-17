@@ -223,7 +223,7 @@ const SearchResults = ( {basename} ) => {
                     <ul className="nav nav-pills nav-stacked">
                         <li className={activeTab === 'rcsbPdb' ? 'active' : ''}>
                             <a onClick={() => handleTabClick('rcsbPdb')}>
-                                RCSB PDB ({num.rcsbPdb})
+                                RCSB PDB Help ({num.rcsbPdb})
                             </a>
                         </li>
                         <li className={activeTab === 'newsAnnouncements' ? 'active' : ''}>
