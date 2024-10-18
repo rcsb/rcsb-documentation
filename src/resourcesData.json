@@ -47,7 +47,7 @@
     "description": "Detailed biostructure information",
     "faqlink" : "/docs/general-help/website-faq#faqs-about-explore",
     "subheadings": [
-      { "title": "Structure Summary Pages", "link": "/docs/exploring-a-3d-structure/overview", "description": "Key detils for individual 3D structures" },
+      { "title": "Structure Summary Pages", "link": "/docs/exploring-a-3d-structure/overview", "description": "Key details for individual 3D structures" },
       { "title": "Ligands of Interest (LOIs)", "link": "/docs/exploring-a-3d-structure/ligands", "description": "Small molecules identified as a focus of research" },
       { "title": "Group Summary Pages", "link": "/docs/grouping-structures/group-summary-pages", "description": "Explore groups of related structures" },
       { "title": "Annotations Browsers", "link": "/docs/search-and-browse/browse-options/overview-browse", "description": "3D structures classified by established ontologies" },
