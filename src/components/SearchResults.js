@@ -132,10 +132,10 @@ const SearchResults = ( {basename} ) => {
     const getUrlTokens = (url) => {
         let a = url.split('/'),
             url_host = a[2],
-            tokens = a[0] + '//' + url_host + '>';
+            tokens = a[0] + '//' + url_host + ' > ';
 
         a = a.splice(3);
-        tokens += a.join('>');
+        tokens += a.join(' > ');
         return tokens;
     };
 
@@ -249,7 +249,7 @@ const SearchResults = ( {basename} ) => {
                                                     <div className="url-tokens">
                                                         <a href={o.url}>{o.url_tokens}</a>
                                                     </div>
-                                                    <h3><a href={o.url}>{o.title}</a></h3>
+                                                    <h3><a href={o.url} dangerouslySetInnerHTML={{ __html: o.title }}></a></h3>
                                                     <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
@@ -266,7 +266,7 @@ const SearchResults = ( {basename} ) => {
                                                     <div className="url-tokens">
                                                         <a href={o.url}>{o.url_tokens}</a>
                                                     </div>
-                                                    <h3><a href={o.url}>{o.title}</a></h3>
+                                                    <h3><a href={o.url} dangerouslySetInnerHTML={{ __html: o.title }}></a></h3>
                                                     {o.release_date && <p>{o.release_date}</p>}
                                                     <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
@@ -287,9 +287,11 @@ const SearchResults = ( {basename} ) => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} target="_blank" rel="noopener noreferrer">
-                                                            {o.title.replace('PDB-101: ', '')}
-                                                        </a>
+                                                        <a href={o.url} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer" 
+                                                            dangerouslySetInnerHTML={{ __html: o.title.replace('PDB-101: ', '') }}
+                                                        ></a>
                                                     </h3>
                                                     <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
@@ -310,9 +312,11 @@ const SearchResults = ( {basename} ) => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
-                                                            {o.title}
-                                                        </a>
+                                                        <a href={o.url} 
+                                                            target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} 
+                                                            rel="noopener noreferrer"
+                                                            dangerouslySetInnerHTML={{ __html: o.title }}
+                                                        ></a>
                                                     </h3>
                                                     <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
