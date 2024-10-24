@@ -80,6 +80,7 @@ const SearchResults = ( {basename} ) => {
     useEffect(() => {
         const fetchResults = async () => {
             setLoading(true); 
+            setActiveTab('all');
             try {
                 // Check if the query contains quotes
                 const isQuoted = query.startsWith('"') && query.endsWith('"');

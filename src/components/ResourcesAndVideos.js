@@ -10,10 +10,10 @@ const ResourcesAndVideos = () => {
       <div className="panel panel-default">
         <div className="panel-heading-gray">
           <div className="row">
-            <div className="col-md-8 col-sm-10 col-xs-10">
+            <div className="col-md-7 col-sm-9 col-xs-9">
               <h3 className="panel-title">Deposition Resources</h3>
             </div>
-            <div className="col-md-4 col-sm-2 col-xs-2">
+            <div className="col-md-5 col-sm-3 col-xs-3">
               <a href="https://www.wwpdb.org/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/wwpdb-truncated.png"
@@ -36,10 +36,10 @@ const ResourcesAndVideos = () => {
       <div className="panel panel-default">
         <div className="panel-heading-gray">
           <div className="row">
-            <div className="col-md-8 col-sm-10 col-xs-10">
+            <div className="col-md-7 col-sm-9 col-xs-9">
               <h3 className="panel-title">Learning Resources</h3>
             </div>
-            <div className="col-md-4 col-sm-2 col-xs-2">
+            <div className="col-md-5 col-sm-3 col-xs-3">
               <a href="https://pdb101.rcsb.org/" target="_blank" rel="noopener noreferrer">
                 <img
                   src="https://cdn.rcsb.org/rcsb-pdb/v2/common/images/pdb101-truncated.png"
@@ -63,12 +63,12 @@ const ResourcesAndVideos = () => {
       <div className="panel panel-default">
         <div className="panel-heading-gray">
           <div className="row">
-            <div className="col-md-8 col-sm-10 col-xs-10">
+            <div className="col-md-7 col-sm-9 col-xs-9">
               <h3 className="panel-title">Video Tutorials</h3>
             </div>
-            <div className="col-md-4 col-sm-2 col-xs-2 text-right">
+            <div className="col-md-5 col-sm-3 col-xs-3 text-right">
             <a href="https://www.youtube.com/user/RCSBProteinDataBank" target="_blank" rel="noopener noreferrer">
-              <i className="fa fa-youtube-play fa-lg" style={{ color: '#325880' }} aria-hidden="true"></i>
+              <i className="fa fa-youtube-play fa-lg" style={{ color: '#325880', fontSize: 'x-large'}} aria-hidden="true"></i>
             </a>
             </div>
           </div>
