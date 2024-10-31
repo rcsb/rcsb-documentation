@@ -58,8 +58,8 @@
     "description": "Data download options and APIs",
     "faqlink" : "/docs/general-help/website-faq#faqs-about-programmatic-access",
     "subheadings": [
-      { "title": "Web APIs", "link": "/docs/programmatic-access/web-services-overview", "description": "Programmatic search and data retrieval" },
-      { "title": "Web APIs Rate Limits", "link": "/docs/programmatic-access/web-services-overview#api-rate-limits", "description": "API rate-limiting restrictions" },
+      { "title": "Web APIs", "link": "/docs/programmatic-access/web-apis-overview", "description": "Programmatic search and data retrieval" },
+      { "title": "Web APIs Rate Limits", "link": "/docs/programmatic-access/web-apis-overview#api-rate-limits", "description": "API rate-limiting restrictions" },
       { "title": "Download PDB Archive", "link": "/docs/programmatic-access/file-download-services#the-pdb-archive", "description": "PDB archive download protocols" },
       { "title": "Batch Download Script", "link": "/docs/programmatic-access/batch-downloads-with-shell-script", "description": "Download multiple files with a script" },
       { "title": "Data Offered by RCSB PDB", "link": "/docs/programmatic-access/file-download-services#other-downloads-offered-by-rcsb-pdb", "description": "Types of files offered for PDB entries" }
