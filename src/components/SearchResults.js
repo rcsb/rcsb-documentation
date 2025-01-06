@@ -1,17 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
-import './SearchResults.css'; // Custom styles
+import HelpMenu from './HelpMenu';
+import './SearchResults.css';
 
-const SEARCH_URL = 'http://localhost:8080/docs-search/search'; //TODO: Remove localhost for deployment; used only for local testing
+const SEARCH_URL = '/docs-api/search';
 const RESULTS_PER_PAGE = 25;
 
-const SearchResults = () => {
+const SearchResults = ( {basename} ) => {
     const { query } = useParams();
     const [results, setResults] = useState([]);
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
     const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState('rcsbPdb');
+    const [activeTab, setActiveTab] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);
 
     // Memoized transformData function to avoid re-creating it on every render
@@ -78,14 +79,35 @@ const SearchResults = () => {
 
     useEffect(() => {
         const fetchResults = async () => {
+            setLoading(true); 
+            setActiveTab('all');
             try {
-                const requestBody = {
-                    query: encodeURIComponent(query),
-                    page: {
-                        size: 100, // Fetch 100 results
-                        current: 1
-                    }
-                };
+                // Check if the query contains quotes
+                const isQuoted = query.startsWith('"') && query.endsWith('"');
+                let requestBody;
+
+                if (isQuoted) {
+                    // For quoted queries, search with exact phrase (AND logic)
+                    requestBody = {
+                        query: query,  // Keep the query as is for exact match
+                        page: {
+                            size: 100, // Fetch 100 results
+                            current: 1
+                        }
+                    };
+                } else {
+                    // For unquoted queries, split into words and apply OR logic
+                    const keywords = query.split(/\s+/);  // Split query by spaces into keywords
+                    const orQuery = keywords.map(word => `(${word})`).join(' OR ');  // Join with OR
+                    
+                    requestBody = {
+                        query: orQuery,  // Use OR logic in the query
+                        page: {
+                            size: 100, // Fetch 100 results
+                            current: 1
+                        }
+                    };
+                }
 
                 const response = await fetch(SEARCH_URL, {
                     method: 'POST',
@@ -99,16 +121,6 @@ const SearchResults = () => {
                 setResults(transformedData.results);
                 setNum(transformedData.num);
                 setLoading(false);
-
-                if (transformedData.num.rcsbPdb === 0) {
-                    if (transformedData.num.newsAnnouncements > 0) {
-                        setActiveTab('newsAnnouncements');
-                    } else if (transformedData.num.pdb101 > 0) {
-                        setActiveTab('pdb101');
-                    } else if (transformedData.num.all > 0) {
-                        setActiveTab('all');
-                    }
-                }
             } catch (error) {
                 console.error('Error fetching search results:', error);
                 setLoading(false);
@@ -121,10 +133,10 @@ const SearchResults = () => {
     const getUrlTokens = (url) => {
         let a = url.split('/'),
             url_host = a[2],
-            tokens = a[0] + '//' + url_host + '>';
+            tokens = a[0] + '//' + url_host + ' > ';
 
         a = a.splice(3);
-        tokens += a.join('>');
+        tokens += a.join(' > ');
         return tokens;
     };
 
@@ -157,7 +169,8 @@ const SearchResults = () => {
                 </div>
                 <nav aria-label="Page navigation">
                     <ul className="pagination">
-                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <li 
+                            className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                             <a className="page-link" onClick={() => handlePageChange(currentPage - 1)} aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
@@ -179,11 +192,21 @@ const SearchResults = () => {
     }
 
     return (
-        <div className="container search-results">
-            <h1>Search Results for "{query}"</h1>
+        <div className="container search-results" style={{ paddingLeft: '0px', paddingRight: '0px' }}>
             <div className="row">
-                <div className="col-lg-8 col-md-8 col-sm-12">
-                    <SearchBar />
+                <div className="col-md-9">
+                    <h1>Search Results for "{query}"</h1>
+                </div>    
+                <div className="col-md-3">
+                    <HelpMenu basename={basename}/>
+                </div> 
+            </div>
+            
+            <div className="row">
+                <div className="col-lg-12">
+                    <div className="doc-search-bar-background">
+                        <SearchBar />
+                    </div>
                 </div>
             </div>
             <div className="row">
@@ -191,7 +214,7 @@ const SearchResults = () => {
                     <ul className="nav nav-pills nav-stacked">
                         <li className={activeTab === 'rcsbPdb' ? 'active' : ''}>
                             <a onClick={() => handleTabClick('rcsbPdb')}>
-                                RCSB PDB ({num.rcsbPdb})
+                                RCSB PDB Help ({num.rcsbPdb})
                             </a>
                         </li>
                         <li className={activeTab === 'newsAnnouncements' ? 'active' : ''}>
@@ -227,8 +250,8 @@ const SearchResults = () => {
                                                     <div className="url-tokens">
                                                         <a href={o.url}>{o.url_tokens}</a>
                                                     </div>
-                                                    <h3><a href={o.url}>{o.title}</a></h3>
-                                                    <p>{o.snippet}</p>
+                                                    <h3><a href={o.url} dangerouslySetInnerHTML={{ __html: o.title }}></a></h3>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -244,9 +267,9 @@ const SearchResults = () => {
                                                     <div className="url-tokens">
                                                         <a href={o.url}>{o.url_tokens}</a>
                                                     </div>
-                                                    <h3><a href={o.url}>{o.title}</a></h3>
+                                                    <h3><a href={o.url} dangerouslySetInnerHTML={{ __html: o.title }}></a></h3>
                                                     {o.release_date && <p>{o.release_date}</p>}
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -265,11 +288,13 @@ const SearchResults = () => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} target="_blank" rel="noopener noreferrer">
-                                                            {o.title.replace('PDB-101: ', '')}
-                                                        </a>
+                                                        <a href={o.url} 
+                                                            target="_blank" 
+                                                            rel="noopener noreferrer" 
+                                                            dangerouslySetInnerHTML={{ __html: o.title.replace('PDB-101: ', '') }}
+                                                        ></a>
                                                     </h3>
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>
@@ -288,11 +313,13 @@ const SearchResults = () => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} rel="noopener noreferrer">
-                                                            {o.title}
-                                                        </a>
+                                                        <a href={o.url} 
+                                                            target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} 
+                                                            rel="noopener noreferrer"
+                                                            dangerouslySetInnerHTML={{ __html: o.title }}
+                                                        ></a>
                                                     </h3>
-                                                    <p>{o.snippet}</p>
+                                                    <p dangerouslySetInnerHTML={{ __html: o.snippet }} />
                                                 </li>
                                             ))}
                                         </ul>

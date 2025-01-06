@@ -10,7 +10,9 @@ const Resources = ({ data }) => {
             <div className="panel-heading">
               <h3 className="panel-title">
                 {category}
-                <span className="tooltip-icon" data-tooltip={data[category].description}>i</span>
+                <span className="tooltip-icon" data-tooltip={data[category].description}> 
+                  <i className="glyphicon glyphicon-info-sign"></i>
+                </span>
               </h3>
             </div>
             <div className="panel-body">
@@ -24,7 +26,7 @@ const Resources = ({ data }) => {
               </ul>
             </div>
             <div className="panel-footer">
-              <a href="#">Related FAQs</a>
+              <a href={data[category].faqlink}>Related FAQs</a>
             </div>
           </div>
         </div>

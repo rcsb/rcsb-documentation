@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Custom styles
 
-const SUGGEST_URL_DOCUMENTS = 'http://localhost:8080/docs-search/query_suggestion?query='; //TODO: Remove localhost for deployment; used only for local testing
+const SUGGEST_URL_DOCUMENTS = '/docs-api/query_suggestion?query=';
 
 const SearchBar = () => {
     const [value, setValue] = useState('');
@@ -10,6 +10,7 @@ const SearchBar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [menuIndex, setMenuIndex] = useState(-1);
     const navigate = useNavigate();
+    const searchBarRef = useRef(null);
 
     const fetchSuggestions = useCallback(async (query) => {
         try {
@@ -43,6 +44,7 @@ const SearchBar = () => {
     };
 
     const handleSearch = useCallback((query) => {
+        setMenuOpen(false);
         navigate(`/${encodeURIComponent(query)}`);
     }, [navigate]);
 
@@ -56,7 +58,11 @@ const SearchBar = () => {
         } else if (e.key === 'ArrowUp') {
             setMenuIndex((prevIndex) => (prevIndex - 1 + menuItems.length) % menuItems.length);
         } else if (e.key === 'Enter') {
-            handleMenuSelect(menuItems[menuIndex]);
+            if (menuIndex >= 0 && menuItems.length > 0) {
+                handleMenuSelect(menuItems[menuIndex]);
+            } else {
+                handleSearch(value);
+            }
         }
     };
 
@@ -65,28 +71,40 @@ const SearchBar = () => {
             handleSearch(value);
         }
     };
-    
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchBarRef.current && !searchBarRef.current.contains(event.target)) {
+                setMenuOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, []);
+
     return (
-        <div className="search-bar-container">
-            <div className="search-bar">
+        <div className="doc-search-bar-container" ref={searchBarRef}>
+            <div className="doc-search-bar">
                 <input type="text"
                     className="form-control"
                     onClick={handleInputClick}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
-                    placeholder="e.g. Structure Motif, Hemoglobin, Webinar"
+                    placeholder="Search for help e.g. Structure Motif, Hemoglobin, Webinar"
                     autoComplete="off"
                     spellCheck="false"
                     autoFocus
                     value={value} />
-                <button className="search-button" onClick={handleButtonClick}>
+                <button className="doc-search-button" onClick={handleButtonClick}>
                     Search
                 </button>
                 <span className="tooltip-icon" data-tooltip="Search for help resources, PDB-101 learning resources, and archived news items">
                     <i className="glyphicon glyphicon-info-sign"></i>
                 </span>
             </div>
-            {menuOpen && (
+            {menuOpen && menuItems.length > 0 && (
                 <ul className="dropdown-menu">
                     {menuItems.map((item, i) => (
                         <li key={item} className={i === menuIndex ? 'active' : ''}>
