@@ -26,7 +26,7 @@ const ResourcesAndVideos = () => {
         </div>
         <div className="panel-body">
           <p><a href="https://deposit-2.wwpdb.org/deposition/" target='_blank'>Deposit Experimental Structures</a></p>
-          <p><a href="https://data.pdb-dev.org/" target='_blank'>Deposit Integrative Models</a></p>
+          <p><a href="https://data.pdb-ihm.org/" target='_blank'>Deposit Integrative Models</a></p>
           <p><a href="http://www.wwpdb.org/deposition/tutorial#video-tutorials" target='_blank'>Data Deposition Related Video Tutorials</a></p>
           <p><a href="/#Category-deposit">Other Deposition Resources</a></p>
         </div>
