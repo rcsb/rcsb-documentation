@@ -33,6 +33,16 @@ Inside the project directory, you can run the following commands:
 - **`webpack.config.js`**: The Webpack configuration file that manages the build and bundling process.
 - **`.babelrc`**: Babel configuration file for JavaScript transpilation.
 
+## Publish
+
+### Prerelease
+    npm version prerelease # assumes the current version ends with '-dev.X'
+    npm publish --tag next
+
+### Release
+    npm version 0.X.0 # provide valid semver string
+    npm publish
+    
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
