@@ -4,9 +4,24 @@ import Resources from './Resources';
 import ResourcesAndVideos from './ResourcesAndVideos';
 import HelpMenu from './HelpMenu';
 import data from '../resourcesData.json';
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 // import './HomePage.css'; // Custom styles for the homepage
 
 const HomePage = ( {basename} ) => {
+  const searchBarRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/' ) {
+      setTimeout(() => {
+        if (searchBarRef.current) {
+          searchBarRef.current.querySelector('input')?.focus();
+        }
+      }, 200);
+    }
+  }, [location.pathname]);
+
   return (
     <div className="container my-4" style={{ paddingLeft: '0px', paddingRight: '0px', marginTop: '-25px' }}>
       <div className="row">
@@ -20,7 +35,7 @@ const HomePage = ( {basename} ) => {
       <div className="row">
         <div className="col-lg-12">
           <div className="doc-search-bar-background">
-            <SearchBar />
+            <SearchBar ref={searchBarRef} />
           </div>
         </div>
       </div>

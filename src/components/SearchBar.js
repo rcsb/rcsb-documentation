@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { forwardRef, useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SearchBar.css'; // Custom styles
 
 const SUGGEST_URL_DOCUMENTS = '/docs-api/query_suggestion?query=';
 
-const SearchBar = () => {
+const SearchBar = forwardRef((prop, ref) => {
     const [value, setValue] = useState('');
     const [menuItems, setMenuItems] = useState([]);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -85,7 +85,7 @@ const SearchBar = () => {
     }, []);
 
     return (
-        <div className="doc-search-bar-container" ref={searchBarRef}>
+        <div className="doc-search-bar-container" ref={ref}>
             <div className="doc-search-bar">
                 <input type="text"
                     className="form-control"
@@ -95,7 +95,6 @@ const SearchBar = () => {
                     placeholder="Search for help e.g. Structure Motif, Hemoglobin, Webinar"
                     autoComplete="off"
                     spellCheck="false"
-                    autoFocus
                     value={value} />
                 <button className="doc-search-button" onClick={handleButtonClick}>
                     Search
@@ -115,6 +114,6 @@ const SearchBar = () => {
             )}
         </div>
     );
-};
+});
 
 export default SearchBar;
