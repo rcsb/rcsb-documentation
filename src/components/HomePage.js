@@ -13,7 +13,7 @@ const HomePage = ( {basename} ) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/' ) {
+    if (location.pathname.startsWith('/')) {
       setTimeout(() => {
         if (searchBarRef.current) {
           searchBarRef.current.querySelector('input')?.focus();
