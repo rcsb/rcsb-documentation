@@ -1,7 +1,7 @@
 {
   "name": "@rcsb/rcsb-documentation",
   "private": false,
-  "version": "0.1.24",
+  "version": "0.1.26",
   "main": "build/bundle.js",
   "files": [
     "build",

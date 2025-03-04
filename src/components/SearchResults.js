@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useParams } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
 import HelpMenu from './HelpMenu';
 import './SearchResults.css';
@@ -8,8 +8,6 @@ const SEARCH_URL = '/docs-api/search';
 const RESULTS_PER_PAGE = 25;
 
 const SearchResults = ( {basename} ) => {
-    const searchBarRef = useRef(null);
-    const location = useLocation();
     const { query } = useParams();
     const [results, setResults] = useState([]);
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
@@ -80,13 +78,6 @@ const SearchResults = ( {basename} ) => {
     }, []);
 
     useEffect(() => {
-        if (location.pathname.startsWith('/')) {
-            setTimeout(() => {
-                if (searchBarRef.current) {
-                    searchBarRef.current.querySelector('input')?.focus();
-                }
-            }, 500);
-        }
         const fetchResults = async () => {
             setLoading(true); 
             setActiveTab('all');
@@ -137,7 +128,7 @@ const SearchResults = ( {basename} ) => {
         };
 
         fetchResults();
-    }, [location.pathname, query, transformData]); // Add transformData to the dependency array
+    }, [query, transformData]); // Add transformData to the dependency array
 
     const getUrlTokens = (url) => {
         let a = url.split('/'),
@@ -214,7 +205,7 @@ const SearchResults = ( {basename} ) => {
             <div className="row">
                 <div className="col-lg-12">
                     <div className="doc-search-bar-background">
-                        <SearchBar ref={searchBarRef} />
+                        <SearchBar />
                     </div>
                 </div>
             </div>
