@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import SearchBar from './SearchBar'; 
 import HelpMenu from './HelpMenu';
-import { useLocation } from 'react-router-dom';
 import './SearchResults.css';
 
 const SEARCH_URL = '/docs-api/search';

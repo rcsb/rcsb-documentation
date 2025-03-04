@@ -18,7 +18,7 @@ const HomePage = ( {basename} ) => {
         if (searchBarRef.current) {
           searchBarRef.current.querySelector('input')?.focus();
         }
-      }, 200);
+      }, 500);
     }
   }, [location.pathname]);
 

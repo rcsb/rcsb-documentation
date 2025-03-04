@@ -89,6 +89,7 @@ const SearchBar = forwardRef((prop, ref) => {
             <div className="doc-search-bar">
                 <input type="text"
                     className="form-control"
+                    autoFocus={true}
                     onClick={handleInputClick}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
