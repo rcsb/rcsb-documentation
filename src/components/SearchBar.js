@@ -92,7 +92,7 @@ const SearchBar = () => {
                     onClick={handleInputClick}
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
-                    placeholder="Search for help e.g. Structure Motif, Hemoglobin, Webinar"
+                    placeholder="Search for help e.g. 3D Motif, Hemoglobin, Webinar"
                     autoComplete="off"
                     spellCheck="false"
                     autoFocus

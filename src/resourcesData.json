@@ -15,10 +15,10 @@
     "faqlink" : "/docs/general-help/website-faq#faqs-about-search-tools",
     "subheadings": [
       { "title": "Sequence Similarity", "link": "/docs/search-and-browse/advanced-search/sequence-similarity-search", "description": "Similar protein, RNA or DNA sequences" },
-      { "title": "Structure Similarity", "link": "/docs/search-and-browse/advanced-search/structure-similarity-search", "description": "Chains or assemblies with similar 3D shape" },
+      { "title": "3D Similarity", "link": "/docs/search-and-browse/advanced-search/3d-similarity-search", "description": "Chains or assemblies with similar 3D shape" },
       { "title": "Chemical Similarity", "link": "/docs/search-and-browse/advanced-search/chemical-similarity-search", "description": "Small molecules with chemically similar structures" },
       { "title": "Sequence Motif", "link": "/docs/search-and-browse/advanced-search/sequence-motif-search", "description": "Sequences that share small, conserved regions" },
-      { "title": "Structure Motif", "link": "/docs/search-and-browse/advanced-search/structure-motif-search", "description": "Structures that share 3D arrangements of residues" }
+      { "title": "3D Motif", "link": "/docs/search-and-browse/advanced-search/3d-motif-search", "description": "Structures that share 3D arrangements of residues" }
     ]
   },
   "Advanced Searching": {
