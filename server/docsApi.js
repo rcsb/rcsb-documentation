@@ -4,7 +4,7 @@ if (typeof fetch === 'undefined') {
 }
 
 // Use native fetch in the browser environment
-const CONTENT_URL = 'https://cs.rcsb.org/content';
+const CONTENT_URL = process.env.RCSB_DOCS_CONTENT_URL;
 const GROUP = 'group';
 const ITEM = 'item';
 const ROOT_ID = 'rcsb-documentation';
@@ -19,6 +19,15 @@ let index = [],
     item_idMap = {},
     hrefMap = {},
     itemMap = {};
+
+function setContentUrl(url) {
+  if (!url) return;
+  CONTENT_URL = url.replace(/\/$/, ''); // remove trailing slash
+}
+
+function getContentUrl() {
+  return CONTENT_URL;
+}
 
 // Fetch the latest 'lastUpdated' value for the top-level id
 async function fetchLastUpdated(env) {
@@ -377,6 +386,8 @@ function setParentGroupState(groupMap, o) {
 
 // Export all functions using CommonJS
 module.exports = {
+    setContentUrl,
+    getContentUrl,
     fetchLastUpdated,
     fetchIndex,
     fetchItem,
