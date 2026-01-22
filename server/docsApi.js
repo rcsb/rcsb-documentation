@@ -4,7 +4,7 @@ if (typeof fetch === 'undefined') {
 }
 
 // Use native fetch in the browser environment
-const CONTENT_URL = process.env.RCSB_DOCS_CONTENT_URL;
+let CONTENT_URL = process.env.RCSB_DOCS_CONTENT_URL;
 const GROUP = 'group';
 const ITEM = 'item';
 const ROOT_ID = 'rcsb-documentation';
