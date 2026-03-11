@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import routes from './routes';
@@ -12,13 +12,13 @@ const NotFound = () => (
 
 const AppContent = () => {
   return (
-    <main className="doc-container mt-5">
+    <main className="doc-container mt-4">
       <Routes>
         {routes.map((route, index) => (
-          <Route 
-            key={index} 
-            path={route.path} 
-            element={route.element} 
+          <Route
+            key={index}
+            path={route.path}
+            element={route.element}
           />
         ))}
         <Route path="*" element={<NotFound />} />
@@ -28,7 +28,7 @@ const AppContent = () => {
 };
 
 //Set the global variable for basename
-const basename =window.__DOCUMENTATION_BASEROUTE__ || '';
+const basename = window.__DOCUMENTATION_BASEROUTE__ || '';
 const App = () => {
   return (
     <ErrorBoundary>

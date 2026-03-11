@@ -77,7 +77,7 @@ const VideoLandingPage = ({ basename }) => {
       {/* Title and HelpMenu Section */}
       <div className="row mb-4 align-items-center video-tutorials-header">
         <div className="col-lg-9 col-md-9 col-sm-12">
-          <h2 className="text-left">Video Tutorials</h2>
+          <h1 className="text-left">Video Tutorials</h1>
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12">
           <HelpMenu basename={basename} />
@@ -137,7 +137,7 @@ const VideoLandingPage = ({ basename }) => {
       {selectedVideo && (
         <div className="video-overlay" onClick={handleCloseVideo}>
           <div className="video-player-container">
-            <div className="embed-responsive embed-responsive-16by9">
+            <div className="ratio ratio-16x9">
               <iframe
                 src={`https://www.youtube.com/embed/${selectedVideo.id}`}
                 title={selectedVideo.title}

@@ -100,8 +100,8 @@ const SearchBar = () => {
                 <button className="doc-search-button" onClick={handleButtonClick}>
                     Search
                 </button>
-                <span className="tooltip-icon" data-tooltip="Search for help resources, PDB-101 learning resources, and archived news items">
-                    <i className="glyphicon glyphicon-info-sign"></i>
+                <span className="tooltip-icon" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Search for help resources, PDB-101 learning resources, and archived news items">
+                    <i className="i-info brand-text"></i>
                 </span>
             </div>
             {menuOpen && menuItems.length > 0 && (

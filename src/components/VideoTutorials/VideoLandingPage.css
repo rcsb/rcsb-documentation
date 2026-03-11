@@ -11,11 +11,11 @@
 }
 
 .video-section-title {
-  font-size: 20px; 
-  font-weight: 700; 
+  font-size: 20px;
+  font-weight: 700;
   color: #333;
-  background-color: #f7f7f7; 
-  padding: 15px; 
+  background-color: #f7f7f7;
+  padding: 15px;
   margin-bottom: 10px;
 }
 
@@ -27,13 +27,19 @@
 
 .video-panel {
   display: flex;
+  flex-wrap: nowrap;
   overflow-x: auto;
   scroll-behavior: smooth;
-  margin: 0 40px; /* To provide space for custom arrows */
+  margin: 0 40px;
+  gap: 16px;
+}
+
+.video-panel>* {
+  flex: 0 0 auto;
 }
 
 .video-item {
-  min-width: 240px;
+  width: 240px;
   margin-right: 10px;
 }
 
@@ -73,50 +79,66 @@
 }
 
 /* Enhanced arrow styles */
-.custom-prev, .custom-next {
+.custom-prev,
+.custom-next {
   position: absolute;
   top: 25%;
   transform: translateY(-10%);
-  background-color: rgba(0, 0, 0, 0.7); /* Dark background for a modern look */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* Dark background for a modern look */
   color: white;
   border: none;
-  border-radius: 50%; /* Round shape */
-  font-size: 24px; /* Increase size for visibility */
+  border-radius: 50%;
+  /* Round shape */
+  font-size: 24px;
+  /* Increase size for visibility */
   width: 50px;
   height: 50px;
   z-index: 2;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth hover effects */
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  /* Subtle shadow for depth */
 }
 
 .custom-prev {
-  left: 10px; /* Keep some padding from the left */
+  left: 10px;
+  /* Keep some padding from the left */
 }
 
 .custom-next {
-  right: 10px; /* Keep some padding from the right */
+  right: 10px;
+  /* Keep some padding from the right */
 }
 
-.custom-prev:hover, .custom-next:hover {
-  background-color: rgba(0, 0, 0, 0.781); /* Darker background on hover */
-  transform: scale(1.1); /* Slight zoom effect on hover */
+.custom-prev:hover,
+.custom-next:hover {
+  background-color: rgba(0, 0, 0, 0.781);
+  /* Darker background on hover */
+  transform: scale(1.1);
+  /* Slight zoom effect on hover */
 }
 
 /* Add Bootstrap Glyphicon for arrow icons */
-.custom-prev::before, .custom-next::before {
+/* .custom-prev::before,
+.custom-next::before {
   font-family: 'Glyphicons Halflings';
-}
+} */
 
 .custom-prev::before {
-  content: "\e079"; /* Bootstrap glyphicon-chevron-left */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f053";
 }
 
 .custom-next::before {
-  content: "\e080"; /* Bootstrap glyphicon-chevron-right */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: "\f054";
 }
 
 /* Video divider */

@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import SearchBar from './SearchBar'; 
+import SearchBar from './SearchBar';
 import HelpMenu from './HelpMenu';
 import './SearchResults.css';
 
 const SEARCH_URL = '/docs-api/search';
 const RESULTS_PER_PAGE = 25;
 
-const SearchResults = ( {basename} ) => {
+const SearchResults = ({ basename }) => {
     const { query } = useParams();
     const [results, setResults] = useState([]);
     const [num, setNum] = useState({ rcsbPdb: 0, newsAnnouncements: 0, pdb101: 0, all: 0 });
@@ -79,7 +79,7 @@ const SearchResults = ( {basename} ) => {
 
     useEffect(() => {
         const fetchResults = async () => {
-            setLoading(true); 
+            setLoading(true);
             setActiveTab('all');
             try {
                 // Check if the query contains quotes
@@ -99,7 +99,7 @@ const SearchResults = ( {basename} ) => {
                     // For unquoted queries, split into words and apply OR logic
                     const keywords = query.split(/\s+/);  // Split query by spaces into keywords
                     const orQuery = keywords.map(word => `(${word})`).join(' OR ');  // Join with OR
-                    
+
                     requestBody = {
                         query: orQuery,  // Use OR logic in the query
                         page: {
@@ -150,7 +150,7 @@ const SearchResults = ( {basename} ) => {
     };
 
     const paginatedResults = results.filter((o) => activeTab === 'all' || o.tab === activeTab)
-                                     .slice((currentPage - 1) * RESULTS_PER_PAGE, currentPage * RESULTS_PER_PAGE);
+        .slice((currentPage - 1) * RESULTS_PER_PAGE, currentPage * RESULTS_PER_PAGE);
 
     const renderPagination = (totalResults) => {
         const totalPages = Math.ceil(totalResults / RESULTS_PER_PAGE);
@@ -163,13 +163,13 @@ const SearchResults = ( {basename} ) => {
             );
         }
         return (
-            <div className="d-flex justify-content-between align-items-center">
-                <div className="pagination-info">
+            <div className="d-flex align-items-center">
+                <div className="pagination-info me-1">
                     Showing {((currentPage - 1) * RESULTS_PER_PAGE) + 1} to {Math.min(currentPage * RESULTS_PER_PAGE, totalResults)} of {totalResults} entries
                 </div>
                 <nav aria-label="Page navigation">
                     <ul className="pagination">
-                        <li 
+                        <li
                             className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
                             <a className="page-link" onClick={() => handlePageChange(currentPage - 1)} aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
@@ -196,12 +196,12 @@ const SearchResults = ( {basename} ) => {
             <div className="row">
                 <div className="col-md-9">
                     <h1>Search Results for "{query}"</h1>
-                </div>    
+                </div>
                 <div className="col-md-3">
-                    <HelpMenu basename={basename}/>
-                </div> 
+                    <HelpMenu basename={basename} />
+                </div>
             </div>
-            
+
             <div className="row">
                 <div className="col-lg-12">
                     <div className="doc-search-bar-background">
@@ -211,24 +211,25 @@ const SearchResults = ( {basename} ) => {
             </div>
             <div className="row">
                 <div className="col-md-3">
-                    <ul className="nav nav-pills nav-stacked">
+
+                    <ul class="nav nav-pills flex-column">
                         <li className={activeTab === 'rcsbPdb' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('rcsbPdb')}>
+                            <a className="nav-link" onClick={() => handleTabClick('rcsbPdb')}>
                                 RCSB PDB Help ({num.rcsbPdb})
                             </a>
                         </li>
                         <li className={activeTab === 'newsAnnouncements' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('newsAnnouncements')}>
+                            <a className="nav-link" onClick={() => handleTabClick('newsAnnouncements')}>
                                 News / Announcements ({num.newsAnnouncements})
                             </a>
                         </li>
                         <li className={activeTab === 'pdb101' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('pdb101')}>
+                            <a className="nav-link" onClick={() => handleTabClick('pdb101')}>
                                 PDB-101 Articles ({num.pdb101})
                             </a>
                         </li>
                         <li className={activeTab === 'all' ? 'active' : ''}>
-                            <a onClick={() => handleTabClick('all')}>
+                            <a className="nav-link" onClick={() => handleTabClick('all')}>
                                 All ({num.all})
                             </a>
                         </li>
@@ -288,9 +289,9 @@ const SearchResults = ( {basename} ) => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} 
-                                                            target="_blank" 
-                                                            rel="noopener noreferrer" 
+                                                        <a href={o.url}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
                                                             dangerouslySetInnerHTML={{ __html: o.title.replace('PDB-101: ', '') }}
                                                         ></a>
                                                     </h3>
@@ -313,8 +314,8 @@ const SearchResults = ( {basename} ) => {
                                                         </a>
                                                     </div>
                                                     <h3>
-                                                        <a href={o.url} 
-                                                            target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'} 
+                                                        <a href={o.url}
+                                                            target={o.url_host === 'www.rcsb.org' ? '_self' : '_blank'}
                                                             rel="noopener noreferrer"
                                                             dangerouslySetInnerHTML={{ __html: o.title }}
                                                         ></a>

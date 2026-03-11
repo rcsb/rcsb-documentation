@@ -4,20 +4,21 @@ import Resources from './Resources';
 import ResourcesAndVideos from './ResourcesAndVideos';
 import HelpMenu from './HelpMenu';
 import data from '../resourcesData.json';
+import '../index.css';
 // import './HomePage.css'; // Custom styles for the homepage
 
-const HomePage = ( {basename} ) => {
+const HomePage = ({ basename }) => {
   return (
-    <div className="container my-4" style={{ paddingLeft: '0px', paddingRight: '0px', marginTop: '-25px' }}>
+    <div className="container container-margin-overwite">
       <div className="row">
         <div className="col-lg-9 col-md-9 col-sm-12">
           <h1 className="text-left mb-3">RCSB PDB Help</h1>
         </div>
         <div className="col-lg-3 col-md-3 col-sm-12">
-          <HelpMenu basename={basename}/>
+          <HelpMenu basename={basename} />
         </div>
       </div>
-      <div className="row">
+      <div className="row mb-4">
         <div className="col-lg-12">
           <div className="doc-search-bar-background">
             <SearchBar />

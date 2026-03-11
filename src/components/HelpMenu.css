@@ -1,8 +1,8 @@
 .small-menu {
-  padding-top: 50px;
-  font-size: 15px;
+  font-size: 1rem;
   text-align: right;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
+  /* Prevent text wrapping */
 }
 
 .divider {
@@ -13,7 +13,8 @@
 .small-menu a {
   color: #325880;
   text-decoration: none;
-  display: inline-block; /* Ensure elements are inline */
+  display: inline-block;
+  /* Ensure elements are inline */
 }
 
 .small-menu a:hover {

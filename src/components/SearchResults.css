@@ -5,14 +5,17 @@
 }
 
 /* Search results heading */
-.search-results h1 {
+/* .search-results h1 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #333;
     font-weight: bold;
-}
+} */
 
-.search-results em { font-style: normal; background-color: #ffa; }
+.search-results em {
+    font-style: normal;
+    background-color: #ffa;
+}
 
 /* Link URL tokens */
 .url-tokens a {
@@ -29,6 +32,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 /* Heading and link styling within search results */
 .search-results h3 a {
     text-decoration: none;
@@ -52,20 +56,20 @@
 }
 
 /* Navigation pills (tabs) */
-.nav-pills > li > a {
+.nav-pills>li>a {
     color: #337ab7;
     padding: 10px 15px;
     border-radius: 4px;
     border-left: 3px solid transparent;
     transition: background-color 0.3s ease, border-left-color 0.3s ease;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
-.nav-pills > li > a:hover {
+.nav-pills>li>a:hover {
     background-color: #e7e7e7;
 }
 
-.nav-pills > li.active > a {
+.nav-pills>li.active>a {
     background-color: #f7f7f7;
     border-left-color: #337ab7;
     color: #337ab7;
@@ -90,6 +94,7 @@
 .list-group-item:last-child {
     border-bottom: none;
 }
+
 /* Pagination */
 .pagination {
     justify-content: flex-end;
