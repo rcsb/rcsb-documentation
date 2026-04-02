@@ -6,11 +6,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-.container-margin-overwite {
-  margin-left: -10px;
-  margin-right: -10px;
-  padding-right: 0;
-}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

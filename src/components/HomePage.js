@@ -4,12 +4,11 @@ import Resources from './Resources';
 import ResourcesAndVideos from './ResourcesAndVideos';
 import HelpMenu from './HelpMenu';
 import data from '../resourcesData.json';
-import '../index.css';
 // import './HomePage.css'; // Custom styles for the homepage
 
 const HomePage = ({ basename }) => {
   return (
-    <div className="container container-margin-overwite">
+    <div>
       <div className="row">
         <div className="col-lg-9 col-md-9 col-sm-12">
           <h1 className="text-left mb-3">RCSB PDB Help</h1>
