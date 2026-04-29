@@ -7,7 +7,7 @@
                 "id": "wvTv8TqWC48",
                 "title": "What is a Protein? (from PDB-101)",
                 "image": "https://img.youtube.com/vi/wvTv8TqWC48/0.jpg"
-                },
+            },
             {
                 "id": "jSk0KgcQWl8",
                 "title": "Entry, Entity, Assembly, and Instance",
@@ -19,36 +19,46 @@
         "topic": "molecular-visualization",
         "title": "Molecular Visualization using Mol*",
         "videos": [
-        {
-            "id": "ptYUuephclA",
-            "title": "Mol* Basics",
-            "image": "https://img.youtube.com/vi/ptYUuephclA/0.jpg"
-        },
-        {
-            "id": "p-CjCzDhLUk",
-            "title": "Using Mol* to Create Stylized Molecular Images at RCSB.org",
-            "image": "https://img.youtube.com/vi/p-CjCzDhLUk/0.jpg"
-        },
-        {
-            "id": "8DjG2BsY7Zw",
-            "title": "Using Mol* to Create Surface Representation at RCSB.org",
-            "image": "https://img.youtube.com/vi/8DjG2BsY7Zw/0.jpg"
-        },
-        {
-            "id": "LQr-6h0nu0o",
-            "title": "Creating Animations with Mol*",
-            "image": "https://img.youtube.com/vi/LQr-6h0nu0o/0.jpg"
-        },
-        {
-            "id": "q-Qy8r0GiLc",
-            "title": "Molstar superposing two structures",
-            "image": "https://img.youtube.com/vi/q-Qy8r0GiLc/0.jpg"
-        },
-        {
-            "id": "13nHI3pyWkM",
-            "title": "Multiple Views in a Mol* Session ",
-            "image": "https://img.youtube.com/vi/13nHI3pyWkM/0.jpg"
-        }
+            {
+                "id": "ptYUuephclA",
+                "title": "Mol* Basics",
+                "image": "https://img.youtube.com/vi/ptYUuephclA/0.jpg"
+            },
+            {
+                "id": "p-CjCzDhLUk",
+                "title": "Using Mol* to Create Stylized Molecular Images at RCSB.org",
+                "image": "https://img.youtube.com/vi/p-CjCzDhLUk/0.jpg"
+            },
+            {
+                "id": "8DjG2BsY7Zw",
+                "title": "Using Mol* to Create Surface Representation at RCSB.org",
+                "image": "https://img.youtube.com/vi/8DjG2BsY7Zw/0.jpg"
+            },
+            {
+                "id": "HRif_s-K3s0",
+                "title": "Using Mol* to Explore Covalent and Non-Covalent Interactions",
+                "image": "https://img.youtube.com/vi/HRif_s-K3s0/0.jpg"
+            },
+            {
+                "id": "fAQ6A_y_2a0",
+                "title": "Using Mol* to Create Transparent Surface Representation",
+                "image": "https://img.youtube.com/vi/fAQ6A_y_2a0/0.jpg"
+            },
+            {
+                "id": "LQr-6h0nu0o",
+                "title": "Creating Animations with Mol*",
+                "image": "https://img.youtube.com/vi/LQr-6h0nu0o/0.jpg"
+            },
+            {
+                "id": "q-Qy8r0GiLc",
+                "title": "Molstar superposing two structures",
+                "image": "https://img.youtube.com/vi/q-Qy8r0GiLc/0.jpg"
+            },
+            {
+                "id": "13nHI3pyWkM",
+                "title": "Multiple Views in a Mol* Session ",
+                "image": "https://img.youtube.com/vi/13nHI3pyWkM/0.jpg"
+            }
         ]
     }
-    ]
+]
