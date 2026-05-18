@@ -1,12 +1,11 @@
 .small-menu {
-  font-size: 1rem;
+  font-size: 14px;
   text-align: right;
   white-space: nowrap;
-  /* Prevent text wrapping */
 }
 
 .divider {
-  color: #5E5D5D;
+  color: #5e5d5d;
   padding: 0 8px;
 }
 
@@ -14,9 +13,15 @@
   color: #325880;
   text-decoration: none;
   display: inline-block;
-  /* Ensure elements are inline */
 }
 
 .small-menu a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 991px) {
+  .small-menu {
+    text-align: left;
+    margin-bottom: 8px;
+  }
 }
