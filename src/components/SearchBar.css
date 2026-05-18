@@ -1,7 +1,7 @@
 .doc-search-bar-container {
   position: relative;
   width: 100%;
-  max-width: 850px;
+  max-width: none;
   margin-left: auto;
   margin-right: auto;
 }
@@ -16,6 +16,7 @@
 .doc-search-bar {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .doc-search-bar .form-control {
@@ -42,12 +43,13 @@
   border-bottom-left-radius: 0;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding: 0 20px;
+  padding: 0 28px;
+  min-width: 120px;
   font-size: 16px;
 }
 
 .doc-search-bar-container .tooltip-icon {
-  margin-left: 5px;
+  margin-left: 10px;
   cursor: pointer;
   position: relative;
   color: #325880;
@@ -59,7 +61,6 @@
   bottom: 10%;
   left: 10%;
   transform: translateX(10px) translateY(-50%);
-  white-space: nowrap;
   background-color: #000;
   color: #fff;
   padding: 5px;
@@ -68,10 +69,10 @@
   visibility: hidden;
   transition: opacity 0.3s ease;
   z-index: 1000;
-  white-space: normal; 
+  white-space: normal;
   width: max-content;
   max-width: 200px;
-  word-wrap: break-word; 
+  word-wrap: break-word;
 }
 
 .doc-search-bar-container .tooltip-icon:hover::after {
@@ -80,7 +81,7 @@
 }
 
 .doc-search-bar-container .dropdown-menu {
-  width: 60%;
+  width: calc(100% - 130px);
   display: block;
   position: absolute;
   top: 100%;
@@ -88,14 +89,30 @@
 
 @media (max-width: 768px) {
   .doc-search-bar-container {
-    padding: 0 15px;
+    padding: 0 8px;
   }
 }
 
-@media (max-width: 480px) {
-  .doc-search-bar-container {
-    max-width: 100%;
+@media (max-width: 575px) {
+  .doc-search-bar {
+    flex-wrap: wrap;
   }
+
+  .doc-search-bar .form-control {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-bottom: 8px;
+  }
+
+  .doc-search-bar .doc-search-button {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .doc-search-bar-container .dropdown-menu {
+    width: 100%;
+  }
+
   .tooltip-icon {
     display: none;
   }
